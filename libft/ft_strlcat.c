@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
+/*
 #include <stdio.h>
 size_t ft_strlcat(char *dst, const char *src, size_t size);
 int	main(void)
@@ -31,13 +31,13 @@ int	main(void)
 	printf("\n");
 	return (0);
 }
-
+*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t 	j;
-	size_t 	res;
-	
+	size_t	j;
+	size_t	res;
+
 	i = 0;
 	while (i < size && dst[i] && !(dst == NULL && size == 0))
 		i++;

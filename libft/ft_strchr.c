@@ -16,11 +16,11 @@ char *ft_strchr(const char *s, int c);
 int	main(void)
 {
 	const char s[] = "Filip";
-	for (int i = 0; s[i-1] != '\0'; i++)
+	for (int i = 0; s[i] >= '\0'; i++)
 	{
 		printf("%p: %c\n", (void *)&s[i], s[i]);
 	}
-	int c = 'p';
+	int c = 'i';
 	char *p = (void *)ft_strchr(s, c);
 	if (p == NULL)
 		printf("\nCharacter not found.\n");
@@ -29,14 +29,16 @@ int	main(void)
 	return (0);
 }
 */
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    int i = 0;
-    while (s[i-1])
-    {
-        if (s[i] == c)
-            return (char *)&s[i];
-        i++;
-    }
-    return (NULL);
+	int	i;
+
+	i = 0;
+	while (s[i] >= '\0')
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
 }

@@ -15,8 +15,7 @@
 char	*ft_strdup(char *src);
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, char *src);
-
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -39,11 +38,11 @@ int main(void)
 
     return 0;
 }
-
 // strdup() returns a pointer to a new string which is a duplicate of string s
 // memory for new string is obtained with malloc() and can be freed with free()
 // on success, the strdup() function returns a pointer to the duplicated string
 // it returns NULL if insufficient memory was available, with err number set
+*/
 
 char	*ft_strdup(char *src)
 {

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:16:47 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:01:11 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:25:44 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,25 @@ int	main(void)
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 
-	if (!(size > 0))
-		return (0);
 	i = 0;
-	while (src[i] && i < size - 1)
+	if (size == 0)
 	{
-		dst[i] = src[i];
+		while (src[i])
+			i++;
+		return (i);
+	}
+	while (i < size - 1 && src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	if (i < size)
+		dest[i] = '\0';
+	while (src[i] != '\0')
+		i++;
 	return (i);
 }

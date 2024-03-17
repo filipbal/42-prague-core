@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:08:01 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:03:39 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:33:01 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ int	main(void)
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	i++;
-	while (i > 0)
+	i = ft_strlen(s);
+	if (c == 0)
+		return ((char *)s + i);
+	while (i >= 0)
 	{
 		if (s[i] == c)
-			return ((char *)&s[i]);
+			return ((char *)s + i);
 		i--;
 	}
 	return (NULL);

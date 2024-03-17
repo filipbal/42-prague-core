@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:39:20 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:44:11 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:23:41 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
 
 int	ft_tolower(int i)
 {
-	if (i > 64 && i < 97)
-		i += 32;
+	if (i >= 'A' && i <= 'Z')
+		return (i + 32);
 	return (i);
 }

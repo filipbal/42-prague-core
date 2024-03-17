@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:40:41 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:27:50 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:24:46 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,18 @@ int	main(void)
 
 // Compare the first n characters of the strings s1 and s2
 // up to a specified length.
+
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, char *s2, size_t n)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	while (*s1 != '\0' && *s1 == *s2 && n > 0)
 	{
-		i++;
+		s1++;
+		s2++;
+		n--;
 	}
-	if (i == n)
-	{
+	if (n == 0)
 		return (0);
-	}
-	else
-	{
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

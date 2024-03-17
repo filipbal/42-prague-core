@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                        :+:      :+:    :+:  */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:08:01 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/02/27 11:08:01 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:03:39 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(void)
 	return (0);
 }
 */
+
+// ft_strrchr searches for the last occurrence
+// of a character c in the input string s.
+
+#include "libft.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;

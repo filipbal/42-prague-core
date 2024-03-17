@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 21:40:41 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/02/29 21:40:41 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:27:50 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	main(void)
 	return (0);
 }
 */
+
+// Compare the first n characters of the strings s1 and s2
+// up to a specified length.
+#include "libft.h"
+
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;

@@ -3,12 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:32:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/11 16:32:12 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:07:25 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// Create a substring by extracting characters from the input string s, 
+// starting from the specified start index
+// and up to a maximum length of len.
 
 #include "libft.h"
 

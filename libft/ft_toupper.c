@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:12:23 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/02/26 20:12:23 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:43:47 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ int main(void)
 	return (0);
 }
 */
-int	ft_toupper(int c)
+
+// Convert character to uppercase
+
+#include "libft.h"
+
+int	ft_toupper(int i)
 {
-	if (c > 96 && c < 123)
-		c -= 32;
-	return (c);
+	if (i > 96 && i < 123)
+		i -= 32;
+	return (i);
 }

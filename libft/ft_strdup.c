@@ -3,18 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:25:57 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/06 18:25:57 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:26:31 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *src);
-int		ft_strlen(char *str);
-char	*ft_strcpy(char *dest, char *src);
 /*
 #include <stdio.h>
 #include <string.h>
@@ -44,40 +39,22 @@ int main(void)
 // it returns NULL if insufficient memory was available, with err number set
 */
 
-char	*ft_strdup(char *src)
-{
-	char	*dest;
+#include "libft.h"
 
-	dest = malloc(ft_strlen(src) + 1);
-	if (dest != NULL)
-	{
-		return (ft_strcpy(dest, src));
-	}
-	return (NULL);
-}
-
-int	ft_strlen(char *str)
+char	*ft_strdup(const char *s)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
-	while (str[i] != '\0')
+	j = ft_strlen(s);
+	str = (char *)malloc(sizeof(*str) * (j + 1));
+	while (i < j)
 	{
+		str[i] = s[i];
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	str[i] = '\0';
+	return (str);
 }

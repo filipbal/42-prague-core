@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:18:20 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/11 16:18:20 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:33:30 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int main(void)
 	return (0);
 }
 */
-int	ft_isdigit(int c)
+
+#include "libft.h"
+
+int	ft_isdigit(int i)
 {
-	if (c >= 48 && c <= 57)
+	while ('0' <= i && i <= '9')
 		return (1);
-	else
-		return (0);
+	return (0);
 }

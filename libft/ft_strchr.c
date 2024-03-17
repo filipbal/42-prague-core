@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:08:01 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/02/27 11:08:01 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:51:10 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(void)
 	return (0);
 }
 */
+
+// ft_strchr searches for the first occurrence
+// of a character c in the input string s.
+
+#include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;

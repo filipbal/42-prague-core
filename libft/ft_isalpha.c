@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:55:49 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/10 18:55:49 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:33:08 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int main(void)
 	return (0);
 }
 */
-int	ft_isalpha(int c)
+
+#include "libft.h"
+
+int	ft_isalpha(int i)
 {
-	if (c >= 65 && c <= 90)
+	if (('a' <= i && i <= 'z') || ('A' <= i && i <= 'Z'))
 		return (1);
-	else if (c >= 95 && c <= 122)
-		return (2);
-	else
-		return (0);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:16:47 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/17 08:16:47 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:01:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int	main(void)
 	return (0);
 }
 */
+
+// copy characters from the source string to the dst string
+// ensure the total len does not exceed the specified size.
+
+#include "libft.h"
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;

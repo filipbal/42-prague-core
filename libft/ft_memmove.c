@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:07:54 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/15 11:07:54 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:41:03 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,35 @@ int	main(void)
 	return (0);
 }
 */
-void	*ft_memmove(void *dest, const void *src, size_t n)
-{
-	unsigned int		i;
-	unsigned char		*castdest;
-	const unsigned char	*castsrc;
 
-	castdest = dest;
-	castsrc = src;
-	i = 0;
-	if (castsrc < castdest)
+// Unlike memcpy, memmove handles overlapping memory areas correctly.
+// It ensures that the data is correctly copied
+// even if the src and dest regions overlap.
+
+#include "libft.h"
+
+void	*ft_memmove(void *s1, const void *s2, size_t n)
+{
+	size_t	len;
+
+	len = 0;
+	if (s2 < s1)
 	{
-		while (i < n)
+		len = n;
+		while (len > 0)
 		{
-			castdest[n - 1 - i] = castsrc[n - 1 - i];
-			i++;
+			len--;
+			((unsigned char *)s1)[len] = ((unsigned char *)s2)[len];
 		}
 	}
 	else
 	{
-		while (n > 0)
+		len = 0;
+		while (len < n)
 		{
-			castdest[i] = castsrc[i];
-			i++;
-			n--;
+			((unsigned char *)s1)[len] = ((unsigned char *)s2)[len];
+			len++;
 		}
 	}
+	return (s1);
 }

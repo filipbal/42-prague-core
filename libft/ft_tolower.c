@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:39:20 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/02/26 20:39:20 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:44:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ int main(void)
 	return (0);
 }
 */
-int	ft_tolower(int c)
+
+// Convert character to lowercase
+
+#include "libft.h"
+
+int	ft_tolower(int i)
 {
-	if (c > 64 && c < 97)
-		c += 32;
-	return (c);
+	if (i > 64 && i < 97)
+		i += 32;
+	return (i);
 }

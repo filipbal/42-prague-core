@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:30:40 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/09 15:30:40 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:55:51 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 /*
 #include <stdio.h>
 char *ft_strjoin(char const *s1, char const *s2);
@@ -28,6 +27,9 @@ int	main(void)
 
 // allocates with malloc and returns a new string by concatenation
 // s1 prefix and s2 suffix string
+
+#include "libft.h"
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	l1;

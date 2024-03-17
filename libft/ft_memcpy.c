@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:39:31 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/15 10:39:31 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:41:33 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,26 @@ int	main(void)
 	return (0);
 }
 */
+
+// ft_memcpy is copies n bytes from the memory area pointed to by src
+// to the memory area pointed to by dest.
+// It performs a byte-wise copy.
+
+#include "libft.h"
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned int		i;
-	unsigned char		*castdest;
-	const unsigned char	*castsrc;
+	size_t	i;
+	char	*d;
+	char	*s;
 
-	castdest = dest;
-	castsrc = src;
 	i = 0;
+	d = (char *)dest;
+	s = (char *)src;
 	while (i < n)
 	{
-		castdest[i] = castsrc[i];
+		d[i] = s[i];
 		i++;
 	}
+	return (dest);
 }

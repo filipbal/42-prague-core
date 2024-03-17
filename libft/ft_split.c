@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 14:55:00 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 15:24:07 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:45:01 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 #include "libft.h"
 
-static void	ft_freeup(char **strs)
+static void	ft_freeup(char *strs)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != NULL)
+	while (strs[i] != '\0')
 	{
-		free(strs[i]);
+		free(strs);
 		i++;
 	}
 	free(strs);

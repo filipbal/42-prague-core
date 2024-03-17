@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:26:03 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 15:35:59 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:48:46 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	string = (char *)malloc(sizeof(char) * (length + 1));
 	if (string == NULL)
 		return (NULL);
-	if (number < 0)
+	if (n < 0)
 	{
 		string[0] = '-';
 		number = -n;

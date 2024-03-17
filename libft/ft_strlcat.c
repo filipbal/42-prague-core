@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:48:09 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/01/18 21:48:09 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:57:57 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int	main(void)
 	return (0);
 }
 */
+
+// concatenate the src string to the end of the dst string, 
+// ensure the total len does not exceed the specified size.
+
+#include "libft.h"
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:13:06 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/06 17:13:06 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:26:49 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ int	main(void)
 	return(0);
 }
 */
+
+//  ft_memcmp compares the first n bytes of memory pointed to by s1 and s2.
+//  It returns:
+// -1 if s1 is less    than s2. 
+//  0 if s1 is equal   to   s2.
+//  1 if s1 is greater than s2.
+
+#include "libft.h"
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;

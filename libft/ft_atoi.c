@@ -6,36 +6,31 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:19:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 18:18:05 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:05:42 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// ft_atoi() function converts the initial portion of the string to int.
-// ft_atoi() function returns the converted value or 0 on error.
 
 #include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int	i;
+	int	num;
 	int	neg;
-	int	res;
 
-	i = 0;
+	num = 0;
 	neg = 1;
-	res = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == 43 || *str == 45)
 	{
-		if (str[i] == '-')
+		if (*str == 45)
 			neg *= -1;
-		i++;
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= 48 && *str <= 57)
 	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
+		num = num * 10 + (*str - '0');
+		str++;
 	}
-	return (res * neg);
+	return (num * neg);
 }

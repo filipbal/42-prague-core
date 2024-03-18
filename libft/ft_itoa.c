@@ -6,57 +6,50 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:26:03 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:48:46 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:07:01 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// The ft_itoa function converts an integer (n) into a string representation.
-// It handles both positive and negative integers.
-
 #include "libft.h"
 
-static unsigned int	ft_number_size(int number)
+size_t	get_size(int n)
 {
-	unsigned int	length;
+	size_t	size;
 
-	length = 0;
-	if (number == 0)
-		return (1);
-	if (number < 0)
-		length += 1;
-	while (number != 0)
+	if (n > 0)
+		size = 0;
+	else
+		size = 1;
+	while (n)
 	{
-		number /= 10;
-		length++;
+		n /= 10;
+		size++;
 	}
-	return (length);
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*string;
-	unsigned int	number;
-	unsigned int	length;
+	char	*str;
+	long	num;
+	size_t	size;
 
-	length = ft_number_size(n);
-	string = (char *)malloc(sizeof(char) * (length + 1));
-	if (string == NULL)
-		return (NULL);
+	num = n;
+	size = get_size(n);
 	if (n < 0)
+		num *= -1;
+	str = (char *)malloc(size + 1);
+	if (!str)
+		return (NULL);
+	*(str + size--) = '\0';
+	while (num > 0)
 	{
-		string[0] = '-';
-		number = -n;
+		*(str + size--) = num % 10 + '0';
+		num /= 10;
 	}
-	else
-		number = n;
-	if (number == 0)
-		string[0] = '0';
-	string[length] = '\0';
-	while (number != 0)
-	{
-		string[length - 1] = (number % 10) + '0';
-		number = number / 10;
-		length--;
-	}
-	return (string);
+	if (size == 0 && str[1] == '\0')
+		*(str + size) = '0';
+	else if (size == 0 && str[1])
+		*(str + size) = '-';
+	return (str);
 }

@@ -6,28 +6,15 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:39:20 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 18:23:41 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:11:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <stdio.h>
-int ft_tolower(int c);
-int main(void)
-{
-	char c = 'Z';
-	printf("%c\n", ft_tolower(c));
-	return (0);
-}
-*/
-
-// Convert character to lowercase
-
 #include "libft.h"
 
-int	ft_tolower(int i)
+int	ft_tolower(int c)
 {
-	if (i >= 'A' && i <= 'Z')
-		return (i + 32);
-	return (i);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

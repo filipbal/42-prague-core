@@ -6,29 +6,25 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:46:27 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 15:46:59 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:09:54 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// The purpose of ft_strmapi is to apply the given function f to each character
-// in the input string s and create a new string based on the results.
 
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
 	char			*str;
+	unsigned int	i;
 
-	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
-	if (str == NULL)
+	str = ft_strdup(s);
+	if (!s || !f || !str)
 		return (NULL);
-	while (s[i] != '\0')
+	i = 0;
+	while (str[i])
 	{
-		str[i] = f(i, s[i]);
+		str[i] = f(i, str[i]);
 		i++;
 	}
-	str[i] = '\0';
 	return (str);
 }

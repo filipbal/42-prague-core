@@ -6,32 +6,31 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:32:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/03/17 17:07:25 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:10:40 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Create a substring by extracting characters from the input string s, 
-// starting from the specified start index
-// and up to a maximum length of len.
-
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str;
+	unsigned int	i;
+	char			*str;
 
-	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	str = ft_calloc(len + 1, sizeof(char));
+	i = 0;
+	if (start >= ft_strlen(s))
+	{
+		str = ft_calloc(1, sizeof(char));
+		if (!str)
+			return (NULL);
+		return (str);
+	}
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	str = ft_calloc(sizeof(char), len + 1);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (i < len)
+	while (s[start + i] && i < len)
 	{
 		str[i] = s[start + i];
 		i++;

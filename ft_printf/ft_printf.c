@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbalakov <fbalakov@student.42prague.com    +#+  +:+       +#+        */
+/*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 10:38:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/05/27 10:38:19 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:41:09 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_printf(const char *, ...);

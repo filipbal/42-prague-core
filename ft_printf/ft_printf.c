@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 10:38:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/05/29 18:15:34 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:28:04 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int main(void) {
 	char			string[] = "Bali";
 	void 			*pointer = 0x000000;
 	int				decimal = 21;
-	int				integer = 2147483648;
+	int				integer = 2147483647;
 	unsigned int	uInteger = 2147483648;
 	unsigned int	hexadecimal = 0xaf0000;
 	unsigned int	Hexadecimal = 0xAF0000;
 
 	printf("Character: %c Pointer: %p String: %s Decimal: %d Integer: %i Unsigned: %u hex: %x HEX: %X %%: %% The END\n", character, pointer, string, decimal, integer, uInteger, hexadecimal, Hexadecimal);	
 	ft_printf("Character: %c Pointer: %p String: %s Decimal: %d Integer: %i Unsigned: %u hex: %x HEX: %X %%: %% The END\n", character, pointer, string, decimal, integer, uInteger, hexadecimal, Hexadecimal);
-    
+
 	return 0;
 }
 

@@ -1,8 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/22 10:00:50 by fbalakov          #+#    #+#              #
+#    Updated: 2024/10/22 10:00:53 by fbalakov         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c
+
+SRCS = ft_printf.c ft_printf_utils.c
 OBJS = $(SRCS:.c=.o)
+
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -28,7 +42,4 @@ fclean: clean
 
 re: fclean all
 
-ft_printf_test: ft_printf.c $(LIBFT)
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -o $@ $< $(LIBFT)
-
-.PHONY: all clean fclean re ft_printf_test
+.PHONY: all clean fclean re

@@ -16,13 +16,13 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
-int     ft_printf(const char *format, ...);
-int     ft_print_char(int c);
-int     ft_print_str(char *str);
-int     ft_print_ptr(void *ptr);
-int     ft_print_int(int n);
-int     ft_print_uint(unsigned int n);
-int     ft_print_hex(unsigned int n, int is_upper);
-int     ft_print_percent(void);
+int	ft_printf(const char *format, ...);
+int	ft_print_char(int c);
+int	ft_print_str(char *str);
+int	ft_print_ptr(void *ptr);
+int	ft_print_int(int n);
+int	ft_print_uint(unsigned int n);
+int	ft_print_hex(unsigned int n, int is_upper);
+int	ft_print_percent(void);
 
 #endif

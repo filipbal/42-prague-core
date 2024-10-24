@@ -6,7 +6,7 @@
 #    By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 10:00:50 by fbalakov          #+#    #+#              #
-#    Updated: 2024/10/22 10:00:53 by fbalakov         ###   ########.fr        #
+#    Updated: 2024/10/24 11:45:02 by fbalakov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c ft_printf_utils.c
+SRCS = ft_printf.c srcs/ft_print_chars.c srcs/ft_print_numbers.c srcs/ft_print_hex.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:11:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/10/25 09:14:24 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/10/25 09:25:43 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,18 @@ static int	ft_count_uint_digits(unsigned int n)
 	return (len);
 }
 
-static void	ft_put_uint_fd(unsigned int n, int fd)
+static void	ft_put_uint(unsigned int n)
 {
+	char	*dec;
+
+	dec = "0123456789";
 	if (n >= 10)
 	{
-		ft_put_uint_fd(n / 10, fd);
-		ft_put_uint_fd(n % 10, fd);
+		ft_put_uint(n / 10);
+		ft_put_uint(n % 10);
 	}
 	else
-		ft_putchar_fd(n + '0', fd);
+		ft_putchar_fd(dec[n], 1);
 }
 
 int	ft_print_int(int n)
@@ -61,6 +64,6 @@ int	ft_print_int(int n)
 
 int	ft_print_uint(unsigned int n)
 {
-	ft_put_uint_fd(n, 1);
+	ft_put_uint(n);
 	return (ft_count_uint_digits(n));
 }

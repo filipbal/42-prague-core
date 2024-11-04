@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:39:29 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/10/25 13:41:08 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:08:48 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ char	*read_and_append(int fd, char *stash, char *buffer)
 	while (bytes_read > 0 && !ft_strchr_gnl(stash, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read < 0)
+		{
+			free(stash);
 			return (NULL);
+		}
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin_gnl(stash, buffer);
 		if (!stash)

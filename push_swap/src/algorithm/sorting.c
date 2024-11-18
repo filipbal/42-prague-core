@@ -6,7 +6,14 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 11:21:51 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:50:54 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	sort_three
+	sort_five
+    sort_large
+	find_best_move
+    execute_move
+*/

@@ -6,7 +6,61 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:43 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 11:21:43 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:15:57 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	stack_init
+    create_node
+    stack_clear
+    is_empty
+    is_sorted
+*/
+
+#include "../../includes/push_swap.h"
+
+t_stack	*stack_init(void)
+{
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	stack->head = NULL;
+	stack->tail = NULL;
+	stack->size = 0;
+	return (stack);
+}
+
+t_node	*create_node(int value)
+{
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	node->prev = NULL;
+	return (node);
+}
+
+void	stack_clear(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (!stack)
+		return ;
+	current = stack->head;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	stack->head = NULL;
+	stack->tail = NULL;
+	stack->size = 0;
+}

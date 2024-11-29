@@ -10,12 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*      
-	main
-	handle_error
-	free_stacks		
-*/
-
 #include "../includes/push_swap.h"
 
 void	handle_error(t_stack *stack_a, t_stack *stack_b)
@@ -75,8 +69,14 @@ int	main(int argc, char **argv)
 		free_stacks(stack_a, stack_b);
 		return (0);
 	}
-	if (stack_a->size == 2 && stack_a->head->value > stack_a->head->next->value)
-    sa(stack_a);
+	if (stack_a->size == 2)
+		sa(stack_a);
+	else if (stack_a->size == 3)
+		sort_three(stack_a);
+	else if (stack_a->size <= 5)
+		sort_five(stack_a, stack_b);
+	else
+		sort_large(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);
 	return (0);
 }

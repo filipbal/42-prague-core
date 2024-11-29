@@ -24,7 +24,8 @@ SRCS = src/main.c \
        src/operations/swap_ops.c \
        src/operations/push_ops.c \
        src/operations/rotate_ops.c \
-       src/operations/rev_rotate_ops.c
+       src/operations/rev_rotate_ops.c \
+       src/algorithm/sorting.c
 
 OBJS = $(SRCS:.c=.o)
 

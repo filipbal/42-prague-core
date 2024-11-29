@@ -17,10 +17,14 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS = src/main.c \
-	   src/utils/input_validation.c \
-	   src/utils/input_parse.c \
-	   src/utils/stack_utils.c \
-	   src/utils/stack_ops.c
+       src/utils/input_validation.c \
+       src/utils/input_parse.c \
+       src/utils/stack_utils.c \
+       src/utils/stack_ops.c \
+       src/operations/swap_ops.c \
+       src/operations/push_ops.c \
+       src/operations/rotate_ops.c \
+       src/operations/rev_rotate_ops.c
 
 OBJS = $(SRCS:.c=.o)
 

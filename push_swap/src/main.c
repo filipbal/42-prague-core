@@ -75,7 +75,8 @@ int	main(int argc, char **argv)
 		free_stacks(stack_a, stack_b);
 		return (0);
 	}
-	// Here will come sorting algorithm selection based on size
+	if (stack_a->size == 2 && stack_a->head->value > stack_a->head->next->value)
+    sa(stack_a);
 	free_stacks(stack_a, stack_b);
 	return (0);
 }

@@ -1,5 +1,17 @@
 #!/bin/bash
 
+check_checker() {
+    if [ ! -f "./checker_linux" ]; then
+        echo "Error: checker_linux not found in current directory"
+        exit 1
+    fi
+    if [ ! -x "./checker_linux" ]; then
+        echo "Error: checker_linux is not executable"
+		echo "Error: Run chmod +x checker_linux"
+        exit 1
+    fi
+}
+
 test_error_handling() {
     echo "=== Testing Error Handling ==="
     
@@ -49,11 +61,15 @@ check_operations() {
     
     echo "Input: $nums"
     local ops=$(./push_swap $nums | wc -l)
-    local sorted_nums=$(./push_swap $nums | ./checker_linux $nums 2>/dev/null)
+    local sorted_nums=$(./push_swap $nums | ./checker_linux $nums)
     
     echo "Test for $size numbers:"
     echo "Operations: $ops (limit: $max_ops)"
-    echo "Checker result: $sorted_nums"
+    if [ -n "$sorted_nums" ]; then
+        echo "Checker result: $sorted_nums"
+    else
+        echo "Checker result: FAILED TO GET RESULT"
+    fi
     echo "Within limit: $([ $ops -le $max_ops ] && echo "YES" || echo "NO")"
     
     echo "Memory check:"
@@ -79,11 +95,15 @@ check_graded_operations() {
     fi
     
     local ops=$(./push_swap $nums | wc -l)
-    local sorted_nums=$(./push_swap $nums | ./checker_linux $nums 2>/dev/null)
+    local sorted_nums=$(./push_swap $nums | ./checker_linux $nums)
     
     echo "Test for $size numbers:"
     echo "Operations: $ops"
-    echo "Checker result: $sorted_nums"
+    if [ -n "$sorted_nums" ]; then
+        echo "Checker result: $sorted_nums"
+    else
+        echo "Checker result: FAILED TO GET RESULT"
+    fi
     
     if [ $ops -lt ${limits[0]} ]; then
         echo "Grade: 5/5 (< ${limits[0]})"
@@ -111,6 +131,9 @@ check_graded_operations() {
 
 # Start testing
 echo "=== Push_swap Tester ==="
+
+# Check for checker_linux
+check_checker
 
 # Error handling tests
 test_error_handling

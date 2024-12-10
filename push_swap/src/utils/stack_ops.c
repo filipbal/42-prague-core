@@ -6,16 +6,9 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:50:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 12:15:53 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:06:02 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*	stack_add_front
-    stack_add_back
-    stack_pop_front
-    get_min_value
-    get_max_value
-*/
 
 #include "../../includes/push_swap.h"
 

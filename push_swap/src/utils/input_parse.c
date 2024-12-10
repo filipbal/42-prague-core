@@ -6,15 +6,9 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:48:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 12:53:40 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:10:46 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-	parse_arguments
-    process_arg
-    init_stacks
-*/
 
 #include "../../includes/push_swap.h"
 

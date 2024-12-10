@@ -6,17 +6,9 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:43 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 12:15:57 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:10:26 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-	stack_init
-    create_node
-    stack_clear
-    is_empty
-    is_sorted
-*/
 
 #include "../../includes/push_swap.h"
 

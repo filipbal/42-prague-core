@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 11:50:54 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:35:13 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,33 @@ static int	get_min_index(t_stack *stack)
 	return (min_index);
 }
 
-void	sort_three(t_stack *stack)
+void	sort_three(t_stack *s)
 {
-	int	first;
-	int	second;
-	int	third;
+	int	a;
+	int	b;
+	int	c;
 
-	if (!stack || !stack->head || !stack->head->next || !stack->head->next->next)
+	if (!s || !s->head || !s->head->next || !s->head->next->next)
 		return ;
-	first = stack->head->value;
-	second = stack->head->next->value;
-	third = stack->head->next->next->value;
-	if (first > second && second < third && first < third)
-		sa(stack);
-	else if (first > second && second > third)
+	a = s->head->value;
+	b = s->head->next->value;
+	c = s->head->next->next->value;
+	if (a > b && b < c && a < c)
+		sa(s);
+	else if (a > b && b > c)
 	{
-		sa(stack);
-		rra(stack);
+		sa(s);
+		rra(s);
 	}
-	else if (first > second && second < third && first > third)
-		ra(stack);
-	else if (first < second && second > third && first < third)
+	else if (a > b && b < c && a > c)
+		ra(s);
+	else if (a < b && b > c && a < c)
 	{
-		sa(stack);
-		ra(stack);
+		sa(s);
+		ra(s);
 	}
-	else if (first < second && second > third && first > third)
-		rra(stack);
+	else if (a < b && b > c && a > c)
+		rra(s);
 }
 
 static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)

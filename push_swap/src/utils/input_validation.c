@@ -6,17 +6,9 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/11/18 12:15:47 by fbalakov         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:01:08 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-	is_valid_integer
-	is_within_limits
-	check_duplicates
-	ft_atoi_strict
-    validate_arg
-*/
 
 #include "../../includes/push_swap.h"
 

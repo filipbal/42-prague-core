@@ -12,6 +12,12 @@
 
 #include "../../includes/push_swap.h"
 
+/*
+	Adds new node to back of stack
+	If stack empty: node becomes both head and tail
+	If stack has nodes: connects new node after current tail
+	Increments stack size
+*/
 void	stack_add_back(t_stack *stack, t_node *new_node)
 {
 	if (!stack || !new_node)

@@ -42,6 +42,9 @@ t_node	*create_node(int value)
 	return (node);
 }
 
+/*
+	Frees all nodes in a stack and resets stack values	
+*/
 void	stack_clear(t_stack *stack)
 {
 	t_node	*current;

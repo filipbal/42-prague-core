@@ -44,6 +44,10 @@ void	sort_three(t_stack *s)
 		rra(s);
 }
 
+/*
+	Returns the index of the smallest value in the stack.
+	Traverses entire stack once to compare all values.
+*/
 static int	get_min_index(t_stack *stack)
 {
 	t_node	*current;

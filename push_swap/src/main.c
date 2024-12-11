@@ -22,6 +22,10 @@ static void	handle_error(t_stack *stack_a, t_stack *stack_b)
 	exit(1);
 }
 
+/*
+	Calls stack_clear to free all nodes
+	Frees the stack structure itself
+*/
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a)

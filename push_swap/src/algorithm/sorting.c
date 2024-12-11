@@ -12,32 +12,9 @@
 
 #include "../../includes/push_swap.h"
 
-static int	get_min_index(t_stack *stack)
-{
-	t_node	*current;
-	int		min;
-	int		index;
-	int		min_index;
-
-	if (!stack || !stack->head)
-		return (-1);
-	current = stack->head;
-	min = current->value;
-	index = 0;
-	min_index = 0;
-	while (current)
-	{
-		if (current->value < min)
-		{
-			min = current->value;
-			min_index = index;
-		}
-		current = current->next;
-		index++;
-	}
-	return (min_index);
-}
-
+/*
+	Sorts 3 numbers in a stack using swap (sa) and/or rotate (ra/rra)
+*/
 void	sort_three(t_stack *s)
 {
 	int	a;
@@ -65,6 +42,32 @@ void	sort_three(t_stack *s)
 	}
 	else if (a < b && b > c && a > c)
 		rra(s);
+}
+
+static int	get_min_index(t_stack *stack)
+{
+	t_node	*current;
+	int		min;
+	int		index;
+	int		min_index;
+
+	if (!stack || !stack->head)
+		return (-1);
+	current = stack->head;
+	min = current->value;
+	index = 0;
+	min_index = 0;
+	while (current)
+	{
+		if (current->value < min)
+		{
+			min = current->value;
+			min_index = index;
+		}
+		current = current->next;
+		index++;
+	}
+	return (min_index);
 }
 
 static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)

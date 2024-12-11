@@ -24,7 +24,11 @@ t_stack	*stack_init(void)
 	stack->size = 0;
 	return (stack);
 }
-
+/*
+	Allocates memory for a new node and initializes its value
+	Connection to stack happens in stack_add_back()
+	Returns pointer to the node, NULL on failure
+*/
 t_node	*create_node(int value)
 {
 	t_node	*node;

@@ -100,6 +100,12 @@ static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b);
 }
 
+/*
+	Sorts stack of 4 or 5 numbers by:
+	Moving two smallest numbers to stack_b
+	Sorting remaining three numbers in stack_a
+	Pushing stack_b back to get final sorted sequence
+*/
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
 	if (!stack_a || !stack_b || stack_a->size < 4)

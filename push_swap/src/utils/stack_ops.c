@@ -36,6 +36,11 @@ void	stack_add_back(t_stack *stack, t_node *new_node)
 	stack->size++;
 }
 
+/* 
+	Linear search O(n) that traverses stack once
+	Returns 1 if stack is empty, contains 1 node or sorted in ASC order
+	Returns 0 if any adjacent pair is out of order
+*/
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;

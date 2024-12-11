@@ -74,6 +74,11 @@ static int	get_min_index(t_stack *stack)
 	return (min_index);
 }
 
+/*
+	Moves the smallest number to the top of stack_a
+	using the most efficient rotation direction (ra or rra),
+	then pushes it to stack_b.
+*/
 static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;

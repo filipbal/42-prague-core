@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 		free_stacks(stack_a, stack_b);
 		handle_error(NULL, NULL);
 	}
-	if (!is_sorted(stack_a) && stack_a->size >= 2)
+	if (!is_sorted(stack_a))
 		sort_stack(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);
 	return (0);

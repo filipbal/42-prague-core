@@ -13,12 +13,16 @@
 #include "minitalk.h"
 
 /*
- * Global variable to store the current character being received.
- * We use a global because signal handlers need access to persistent data
- * between calls.
+ * Global structure to store the server's bit processing state.
+ * Combines both character and position tracking into a single global.
+ * - current_char: Stores the character being built from received bits
+ * - bit_position: Tracks which bit position (0-7) we're currently processing
  */
-static char	g_current_char = 0;
-static int	g_bit_position = 0;
+static struct s_server_data
+{
+	char	current_char;
+	int		bit_position;
+}	g_server_data = {0, 0};
 
 /*
  * Signal handler function that processes incoming SIGUSR1 and SIGUSR2 signals.
@@ -29,13 +33,13 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 {
 	(void)context;
 	if (signum == SIGUSR2)
-		g_current_char |= (1 << g_bit_position);
-	g_bit_position++;
-	if (g_bit_position == 8)
+		g_server_data.current_char |= (1 << g_server_data.bit_position);
+	g_server_data.bit_position++;
+	if (g_server_data.bit_position == 8)
 	{
-		ft_putchar_fd(g_current_char, 1);
-		g_current_char = 0;
-		g_bit_position = 0;
+		ft_putchar_fd(g_server_data.current_char, 1);
+		g_server_data.current_char = 0;
+		g_server_data.bit_position = 0;
 	}
 	kill(info->si_pid, SIGUSR1);
 }
@@ -60,10 +64,6 @@ void	setup_signal_handlers(void)
 	}
 }
 
-// Print server's PID so clients can connect
-// Set up signal handlers
-// Keep the server running indefinitely
-// Pause until a signal is received
 int	main(void)
 {
 	ft_printf("Server PID: %d\n", getpid());

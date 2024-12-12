@@ -12,36 +12,55 @@
 
 #include "minitalk.h"
 
-static int	ft_handle_format(char format, va_list args)
+static int	ft_handle_str(va_list args)
+{
+	char	*str;
+	int		result;
+
+	result = 0;
+	str = va_arg(args, char *);
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	ft_putstr_fd(str, 1);
+	while (str[result])
+		result++;
+	return (result);
+}
+
+static int	count_digits(int n)
 {
 	int	result;
 
 	result = 0;
-	if (format == 's')
+	if (n <= 0)
+		result = 1;
+	while (n != 0)
 	{
-		char *str = va_arg(args, char *);
-		if (!str)
-		{
-			ft_putstr_fd("(null)", 1);
-			return (6);
-		}
-		ft_putstr_fd(str, 1);
-		while (str[result])
-			result++;
-	}
-	else if (format == 'd')
-	{
-		int num = va_arg(args, int);
-		ft_putnbr_fd(num, 1);
-		if (num <= 0)
-			result = 1;
-		while (num != 0)
-		{
-			num /= 10;
-			result++;
-		}
+		n /= 10;
+		result++;
 	}
 	return (result);
+}
+
+static int	ft_handle_num(va_list args)
+{
+	int	num;
+
+	num = va_arg(args, int);
+	ft_putnbr_fd(num, 1);
+	return (count_digits(num));
+}
+
+static int	ft_handle_format(char format, va_list args)
+{
+	if (format == 's')
+		return (ft_handle_str(args));
+	else if (format == 'd')
+		return (ft_handle_num(args));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)

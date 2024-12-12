@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,44 +12,63 @@
 
 #include "minitalk.h"
 
-static char	g_current_char = 0;
-static int	g_bit_position = 0;
+static volatile sig_atomic_t	g_bit_received = 0;
 
-void	handle_signal(int signum, siginfo_t *info, void *context)
+void	handle_response(int signum)
 {
-	(void)context;
-
-	if (signum == SIGUSR2)
-		g_current_char |= (1 << g_bit_position);
-	g_bit_position++;
-	if (g_bit_position == 8)
-	{
-		ft_putchar_fd(g_current_char, 1);
-		g_current_char = 0;
-		g_bit_position = 0;
-	}
-	kill(info->si_pid, SIGUSR1);
+	(void)signum;
+	g_bit_received = 1;
 }
 
-void	setup_signal_handlers(void)
+void	send_char(pid_t server_pid, char c)
 {
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
+	{
+		g_bit_received = 0;
+		if (c & (1 << bit))
+			kill(server_pid, SIGUSR2);
+		else
+			kill(server_pid, SIGUSR1);
+		while (!g_bit_received)
+			usleep(100);
+		bit++;
+	}
+}
+
+void	send_message(pid_t server_pid, const char *message)
+{
+	while (*message)
+		send_char(server_pid, *message++);
+	send_char(server_pid, '\n');
+}
+
+int	main(int argc, char **argv)
+{
+	pid_t				server_pid;
 	struct sigaction	sa;
 
-	sa.sa_sigaction = handle_signal;
-	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	if (sigaction(SIGUSR1, &sa, NULL) == -1 || sigaction(SIGUSR2, &sa, NULL) == -1)
+	if (argc != 3)
 	{
-		ft_printf("Error: Could not set up signal handlers\n");
-		exit(1);
+		ft_printf(ERR_USAGE);
+		return (1);
 	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: %d\n", getpid());
-	setup_signal_handlers();
-	while (1)
-		pause();
+	server_pid = atoi(argv[1]);
+	if (server_pid <= 0)
+	{
+		ft_printf(ERR_PID);
+		return (1);
+	}
+	sa.sa_handler = handle_response;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+	{
+		ft_printf(ERR_SIGNAL);
+		return (1);
+	}
+	send_message(server_pid, argv[2]);
 	return (0);
 }

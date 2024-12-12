@@ -117,31 +117,74 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 		pa(stack_a, stack_b);
 }
 
-void	sort_large(t_stack *stack_a, t_stack *stack_b)
+static int get_max_bits(t_stack *stack)
 {
-	int	size;
-	int	bits;
-	int	i;
-	int	j;
-	int	num;
+    t_node  *current;
+    int     max;
+    int     bits;
 
-	size = stack_a->size;
-	bits = 0;
-	while ((size - 1) >> bits)
-		bits++;
-	i = -1;
-	while (++i < bits)
-	{
-		j = -1;
-		while (++j < size)
-		{
-			num = stack_a->head->value;
-			if ((num >> i) & 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-		}
-		while (stack_b->size)
-			pa(stack_a, stack_b);
-	}
+    current = stack->head;
+    max = current->index;
+    while (current)
+    {
+        if (current->index > max)
+            max = current->index;
+        current = current->next;
+    }
+    bits = 0;
+    while (max >> bits)
+        bits++;
+    return (bits);
+}
+
+static void index_stack(t_stack *stack)
+{
+    t_node  *i;
+    t_node  *j;
+    int     index;
+
+    i = stack->head;
+    while (i)
+    {
+        index = 0;
+        j = stack->head;
+        while (j)
+        {
+            if (j->value < i->value)
+                index++;
+            j = j->next;
+        }
+        i->index = index;
+        i = i->next;
+    }
+}
+
+void    sort_large(t_stack *stack_a, t_stack *stack_b)
+{
+    t_node  *current;
+    int     max_bits;
+    int     size;
+    int     i;
+    int     j;
+
+    index_stack(stack_a);
+    max_bits = get_max_bits(stack_a);
+    size = stack_a->size;
+    i = 0;
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < size)
+        {
+            current = stack_a->head;
+            if (((current->index >> i) & 1) == 0)
+                pb(stack_a, stack_b);
+            else
+                ra(stack_a);
+            j++;
+        }
+        while (stack_b->size != 0)
+            pa(stack_a, stack_b);
+        i++;
+    }
 }

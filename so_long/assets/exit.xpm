@@ -1,0 +1,40 @@
+/* XPM */
+static char *exit[] = {
+"32 32 4 1",
+"  c #000000", /* black outline */
+". c #8B4513", /* brown basket */
+"o c #A0522D", /* lighter brown */
+"X c None",    /* transparent background */
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXX        XXXXXXXXXXX",
+"XXXXXXXXXX oooooooo XXXXXXXXXX",
+"XXXXXXXX oooooooooooo XXXXXXXX",
+"XXXXXXX oooooooooooooo XXXXXXX",
+"XXXXXX oooooooooooooooo XXXXXX",
+"XXXXX oooooooooooooooooo XXXXX",
+"XXXX oooooooooooooooooooo XXXX",
+"XXXX ..oooooooooooooooo.. XXXX",
+"XXXX ....oooooooooooo.... XXXX",
+"XXXX ......oooooooo...... XXXX",
+"XXXX ........oooo........ XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXX .................... XXXX",
+"XXXXX .................. XXXXX",
+"XXXXXX ................ XXXXXX",
+"XXXXXXX .............. XXXXXXX",
+"XXXXXXXX ............ XXXXXXXX",
+"XXXXXXXXX          XXXXXXXXX"
+};

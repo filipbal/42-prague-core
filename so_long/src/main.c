@@ -53,8 +53,8 @@ static int    start_game(char *map_file)
     setup_events(&game);
 
     /* Display initial game state */
-    ft_printf("Welcome to Miss Hygiene!\n");
-    ft_printf("Collect all %d socks and reach the basket!\n", game.collectibles);
+    ft_printf("Welcome to Betty's Adventure!\n");
+    ft_printf("Collect all %d bones and reach the bed!\n", game.collectibles);
     ft_printf("Use WASD or arrow keys to move\n");
     
     /* Render initial game state */

@@ -69,7 +69,7 @@ int    load_images(t_game *game)
     game->img_wall = mlx_xpm_file_to_image(game->mlx, 
         "assets/wall.xpm", &width, &height);
     game->img_collect = mlx_xpm_file_to_image(game->mlx, 
-        "assets/white_sock.xpm", &width, &height);
+    "assets/bone.xpm", &width, &height);  // Change from white_sock.xpm
     game->img_exit = mlx_xpm_file_to_image(game->mlx, 
         "assets/exit.xpm", &width, &height);
     

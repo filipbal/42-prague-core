@@ -18,13 +18,13 @@ static void    handle_exit(t_game *game)
     /* Check if all collectibles are gathered before allowing exit */
     if (game->collected == game->collectibles)
     {
-        ft_printf("\nCongratulations! All socks collected!\n");
+        ft_printf("\nCongratulations! All bones collected!\n");
         ft_printf("Total moves: %d\n", game->moves);
         cleanup_game(game);
         exit(0);
     }
     else
-        ft_printf("Collect all socks before exiting!\n");
+        ft_printf("Collect all bones before exiting!\n");
 }
 
 /* Process the movement and update game state */
@@ -43,7 +43,7 @@ static void    process_move(t_game *game, int new_x, int new_y)
         {
             game->collected++;
             game->map[new_y][new_x] = '0';  // Replace collected item with empty space
-            ft_printf("Socks collected: %d/%d\n", 
+            ft_printf("Bones collected: %d/%d\n", 
                 game->collected, game->collectibles);
         }
         /* Handle exit */

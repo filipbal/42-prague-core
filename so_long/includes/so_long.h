@@ -35,7 +35,8 @@
 
 /* Define window properties */
 # define TILE_SIZE   32
-# define WINDOW_TITLE "Miss Hygiene - So Long"
+/* Change the window title */
+# define WINDOW_TITLE "Betty's Adventure - So Long"
 
 /* Define map characters */
 # define EMPTY       '0'

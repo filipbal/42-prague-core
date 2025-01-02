@@ -24,41 +24,45 @@ static int	check_file_extension(char *filename)
 }
 
 /* Initialize and start the game */
-static int	start_game(char *map_file)
+static int    start_game(char *map_file)
 {
-	t_game	game;
+    t_game  game;
 
-	/* Initialize all game variables to 0/NULL */
-	ft_memset(&game, 0, sizeof(t_game));
+    /* Initialize all game variables to 0/NULL */
+    ft_memset(&game, 0, sizeof(t_game));
 
-	/* Parse and validate the map */
-	if (!parse_map(&game, map_file))
-	{
-		ft_printf("Error\nInvalid map configuration\n");
-		return (0);
-	}
+    /* Parse and validate the map */
+    if (!parse_map(&game, map_file))
+    {
+        ft_printf("Error\nInvalid map configuration\n");
+        cleanup_game(&game);  // We need this even on parse failure
+        return (0);
+    }
 
-	/* Initialize the game engine and window */
-	if (!init_game(&game))
-	{
-		ft_printf("Error\nFailed to initialize game\n");
-		return (0);
-	}
+    ft_printf("Debug: After parse_map - dimensions: %dx%d\n", game.map_width, game.map_height);
 
-	/* Set up event handlers */
-	setup_events(&game);
+    /* Initialize the game engine and window */
+    if (!init_game(&game))
+    {
+        ft_printf("Error\nFailed to initialize game\n");
+        cleanup_game(&game);
+        return (0);
+    }
 
-	/* Display initial game state */
-	ft_printf("Welcome to Miss Hygiene!\n");
-	ft_printf("Collect all %d socks and reach the basket!\n", game.collectibles);
-	ft_printf("Use WASD or arrow keys to move\n");
-	
-	/* Render initial game state */
-	render_game(&game);
+    /* Set up event handlers */
+    setup_events(&game);
 
-	/* Start the game loop */
-	mlx_loop(game.mlx);
-	return (1);
+    /* Display initial game state */
+    ft_printf("Welcome to Miss Hygiene!\n");
+    ft_printf("Collect all %d socks and reach the basket!\n", game.collectibles);
+    ft_printf("Use WASD or arrow keys to move\n");
+    
+    /* Render initial game state */
+    render_game(&game);
+
+    /* Start the game loop */
+    mlx_loop(game.mlx);
+    return (1);
 }
 
 int	main(int argc, char **argv)

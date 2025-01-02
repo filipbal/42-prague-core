@@ -136,9 +136,8 @@ int    parse_map(t_game *game, char *filename)
     int        fd;
     char    *line;
     int        height;
-    char    *trimmed_line;
+    size_t    len;
     
-    /* Open and read map file */
     fd = open(filename, O_RDONLY);
     if (fd < 0)
     {
@@ -146,48 +145,45 @@ int    parse_map(t_game *game, char *filename)
         return (0);
     }
     
-    /* Get map dimensions and check rectangular shape */
     height = 0;
+    game->map_width = 0;  // Initialize to 0
     while (1)
     {
         line = get_next_line(fd);
         if (!line)
             break;
-        
-        /* Remove newline if present */
-        trimmed_line = ft_strtrim(line, "\n");
-        if (!trimmed_line)
-        {
-            free(line);
-            close(fd);
-            return (0);
-        }
-        
+        len = ft_strlen(line);
+        if (len > 0 && line[len - 1] == '\n')  // Remove newline from count
+            len--;
         if (height == 0)
         {
-            game->map_width = ft_strlen(trimmed_line);
-            ft_printf("Debug: First line length: %d\n", game->map_width);
-            ft_printf("Debug: First line content: '%s'\n", trimmed_line);
+            game->map_width = len;
+            ft_printf("Debug: First line length (without newline): %d\n", game->map_width);
+            ft_printf("Debug: First line content: '%s'\n", line);
         }
-        else if ((int)ft_strlen(trimmed_line) != game->map_width)
+        else if ((int)len != game->map_width)
         {
-            ft_printf("Debug: Line %d has different length. Expected %d, got %d\n", 
-                     height + 1, game->map_width, (int)ft_strlen(trimmed_line));
-            ft_printf("Debug: Line content: '%s'\n", trimmed_line);
+            ft_printf("Debug: Line %d has different length. Expected %d, got %zu\n", 
+                     height + 1, game->map_width, len);
             free(line);
-            free(trimmed_line);
             close(fd);
             return (0);
         }
         free(line);
-        free(trimmed_line);
         height++;
     }
-    ft_printf("Debug: Map height: %d\n", height);
     close(fd);
     
-    /* Allocate memory for map */
     game->map_height = height;
+    ft_printf("Debug: Final map dimensions: %dx%d\n", game->map_width, game->map_height);
+    
+    if (game->map_width == 0 || game->map_height == 0)
+    {
+        ft_printf("Debug: Invalid map dimensions\n");
+        return (0);
+    }
+    
+    /* Allocate memory for map */
     game->map = (char **)malloc(sizeof(char *) * (height + 1));
     if (!game->map)
         return (0);
@@ -206,35 +202,25 @@ int    parse_map(t_game *game, char *filename)
         line = get_next_line(fd);
         if (!line)
             break;
-        
-        /* Remove newline if present */
-        trimmed_line = ft_strtrim(line, "\n");
-        if (!trimmed_line)
+        if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
+            line[ft_strlen(line) - 1] = '\0';  // Remove newline
+        game->map[height] = ft_strdup(line);  // Make a clean copy
+        free(line);
+        if (!game->map[height])
         {
-            free(line);
             free_map(game->map, height);
             close(fd);
             return (0);
         }
-        
-        game->map[height] = trimmed_line;
-        free(line);
         height++;
     }
-    game->map[height] = NULL;  /* NULL terminate the array */
+    game->map[height] = NULL;
     close(fd);
     
     ft_printf("Debug: Map loaded. Validating...\n");
-    /* Validate map */
     if (!check_walls(game) || !check_elements(game) || !check_path(game))
     {
         ft_printf("Debug: Map validation failed\n");
-        if (!check_walls(game))
-            ft_printf("Debug: Wall check failed\n");
-        if (!check_elements(game))
-            ft_printf("Debug: Elements check failed\n");
-        if (!check_path(game))
-            ft_printf("Debug: Path check failed\n");
         free_map(game->map, game->map_height);
         game->map = NULL;
         return (0);

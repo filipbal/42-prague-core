@@ -34,7 +34,7 @@
 # define KEY_RIGHT   65363
 
 /* Define window properties */
-# define TILE_SIZE   32
+# define TILE_SIZE   48  /* Increased from 32 to 48 pixels */
 /* Change the window title */
 # define WINDOW_TITLE "Betty's Adventure - So Long"
 

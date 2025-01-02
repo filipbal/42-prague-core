@@ -136,11 +136,15 @@ int    parse_map(t_game *game, char *filename)
     int        fd;
     char    *line;
     int        height;
+    char    *trimmed_line;
     
     /* Open and read map file */
     fd = open(filename, O_RDONLY);
     if (fd < 0)
+    {
+        ft_printf("Debug: Failed to open file %s\n", filename);
         return (0);
+    }
     
     /* Get map dimensions and check rectangular shape */
     height = 0;
@@ -149,45 +153,94 @@ int    parse_map(t_game *game, char *filename)
         line = get_next_line(fd);
         if (!line)
             break;
-        if (height == 0)
-            game->map_width = ft_strlen(line);
-        else if ((int)ft_strlen(line) != game->map_width)
+        
+        /* Remove newline if present */
+        trimmed_line = ft_strtrim(line, "\n");
+        if (!trimmed_line)
         {
             free(line);
             close(fd);
             return (0);
         }
+        
+        if (height == 0)
+        {
+            game->map_width = ft_strlen(trimmed_line);
+            ft_printf("Debug: First line length: %d\n", game->map_width);
+            ft_printf("Debug: First line content: '%s'\n", trimmed_line);
+        }
+        else if ((int)ft_strlen(trimmed_line) != game->map_width)
+        {
+            ft_printf("Debug: Line %d has different length. Expected %d, got %d\n", 
+                     height + 1, game->map_width, (int)ft_strlen(trimmed_line));
+            ft_printf("Debug: Line content: '%s'\n", trimmed_line);
+            free(line);
+            free(trimmed_line);
+            close(fd);
+            return (0);
+        }
         free(line);
+        free(trimmed_line);
         height++;
     }
+    ft_printf("Debug: Map height: %d\n", height);
     close(fd);
     
     /* Allocate memory for map */
     game->map_height = height;
-    game->map = (char **)malloc(sizeof(char *) * height);
+    game->map = (char **)malloc(sizeof(char *) * (height + 1));
     if (!game->map)
         return (0);
     
     /* Read map content */
     fd = open(filename, O_RDONLY);
+    if (fd < 0)
+    {
+        free(game->map);
+        return (0);
+    }
+    
     height = 0;
     while (1)
     {
         line = get_next_line(fd);
         if (!line)
             break;
-        game->map[height++] = line;  // Store the line directly
+        
+        /* Remove newline if present */
+        trimmed_line = ft_strtrim(line, "\n");
+        if (!trimmed_line)
+        {
+            free(line);
+            free_map(game->map, height);
+            close(fd);
+            return (0);
+        }
+        
+        game->map[height] = trimmed_line;
+        free(line);
+        height++;
     }
+    game->map[height] = NULL;  /* NULL terminate the array */
     close(fd);
     
+    ft_printf("Debug: Map loaded. Validating...\n");
     /* Validate map */
     if (!check_walls(game) || !check_elements(game) || !check_path(game))
     {
+        ft_printf("Debug: Map validation failed\n");
+        if (!check_walls(game))
+            ft_printf("Debug: Wall check failed\n");
+        if (!check_elements(game))
+            ft_printf("Debug: Elements check failed\n");
+        if (!check_path(game))
+            ft_printf("Debug: Path check failed\n");
         free_map(game->map, game->map_height);
         game->map = NULL;
         return (0);
     }
     
+    ft_printf("Debug: Map validation successful\n");
     return (1);
 }
 

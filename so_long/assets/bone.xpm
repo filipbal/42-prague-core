@@ -1,0 +1,40 @@
+/* XPM */
+static char *bone[] = {
+"32 32 4 1",
+"  c #000000", /* black outline */
+". c #FFFFFF", /* white fill */
+"o c #F0F0F0", /* slight shading */
+"X c None",    /* transparent background */
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXX    XXXXXXXX    XXXXX",
+"XXXXXXXX .... XXXXXX .... XXXXX",
+"XXXXXXX ...... XXXX ...... XXXX",
+"XXXXXX ........ XX ........ XXX",
+"XXXXXX ..................... XXX",
+"XXXXXX ..................... XXX",
+"XXXXXXX ................... XXXX",
+"XXXXXXXX ................. XXXXX",
+"XXXXXXXXXX ............. XXXXXXX",
+"XXXXXXXXXXXX ......... XXXXXXXXX",
+"XXXXXXXXXXXXXX ..... XXXXXXXXXXX",
+"XXXXXXXXXXXXXXX ... XXXXXXXXXXXX",
+"XXXXXXXXXXXXXXX ... XXXXXXXXXXXX",
+"XXXXXXXXXXXXXX ..... XXXXXXXXXXX",
+"XXXXXXXXXXXX ......... XXXXXXXXX",
+"XXXXXXXXXX ............. XXXXXXX",
+"XXXXXXXX ................. XXXXX",
+"XXXXXXX ................... XXXX",
+"XXXXXX ..................... XXX",
+"XXXXXX ..................... XXX",
+"XXXXXX ........ XX ........ XXX",
+"XXXXXXX ...... XXXX ...... XXXX",
+"XXXXXXXX .... XXXXXX .... XXXXX",
+"XXXXXXXXXX    XXXXXXXX    XXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+};

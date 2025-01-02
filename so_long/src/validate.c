@@ -53,7 +53,11 @@ int	validate_dimensions(int height, int width)
 {
 	if (height < 3 || width < 3)
 		return (0);
-	if (height > 100 || width > 100)  /* Arbitrary max size for performance */
+	/* Adjusted max dimensions for 64x64 tiles */
+	/* Max window size consideration:
+	 * Width: 30 * 64 = 1920 pixels (standard screen width)
+	 * Height: 16 * 64 = 1024 pixels (comfortable height) */
+	if (height > 16 || width > 30)
 		return (0);
 	return (1);
 }

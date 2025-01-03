@@ -17,73 +17,60 @@ static int	check_file_extension(char *filename)
 {
 	size_t	len;
 
+	if (!filename)
+		return (0);
 	len = ft_strlen(filename);
 	if (len < 4)
 		return (0);
 	return (!ft_strncmp(filename + len - 4, ".ber", 4));
 }
 
-/* Initialize and start the game */
-static int    start_game(char *map_file)
+/* 
+** Initialize all game variables to 0/NULL
+** Parse and validate the map
+** Initialize the game engine and window
+** Set up event handlers
+** Display initial game state
+** Render initial game state
+** Start the game loop 
+*/
+static int	start_game(char *map_file)
 {
-    t_game  game;
+	t_game	game;
 
-    /* Initialize all game variables to 0/NULL */
-    ft_memset(&game, 0, sizeof(t_game));
-
-    /* Parse and validate the map */
-    if (!parse_map(&game, map_file))
-    {
-        ft_printf("Error\nInvalid map configuration\n");
-        cleanup_game(&game);  // We need this even on parse failure
-        return (0);
-    }
-
-    ft_printf("Debug: After parse_map - dimensions: %dx%d\n", game.map_width, game.map_height);
-
-    /* Initialize the game engine and window */
-    if (!init_game(&game))
-    {
-        ft_printf("Error\nFailed to initialize game\n");
-        cleanup_game(&game);
-        return (0);
-    }
-
-    /* Set up event handlers */
-    setup_events(&game);
-
-    /* Display initial game state */
-    ft_printf("Welcome to Betty's Adventure!\n");
-    ft_printf("Collect all %d bones and reach the bed!\n", game.collectibles);
-    ft_printf("Use WASD or arrow keys to move\n");
-    
-    /* Render initial game state */
-    render_game(&game);
-
-    /* Start the game loop */
-    mlx_loop(game.mlx);
-    return (1);
+	ft_memset(&game, 0, sizeof(t_game));
+	if (!parse_map(&game, map_file))
+	{
+		ft_printf("Error\nInvalid map configuration\n");
+		cleanup_game(&game);
+		return (0);
+	}
+	if (!init_game(&game))
+	{
+		ft_printf("Error\nFailed to initialize game\n");
+		cleanup_game(&game);
+		return (0);
+	}
+	setup_events(&game);
+	ft_printf("Welcome to Betty's Adventure!\n");
+	ft_printf("Collect all %d bones and reach the bed!\n", game.collectibles);
+	ft_printf("Use WASD or arrow keys to move\n");
+	render_game(&game);
+	mlx_loop(game.mlx);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	/* Check if correct number of arguments provided */
 	if (argc != 2)
 	{
 		ft_printf("Error\nUsage: ./so_long <map_file.ber>\n");
 		return (1);
 	}
-
-	/* Validate file extension */
 	if (!check_file_extension(argv[1]))
 	{
 		ft_printf("Error\nInvalid file extension (must be .ber)\n");
 		return (1);
 	}
-
-	/* Start the game with provided map file */
-	if (!start_game(argv[1]))
-		return (1);
-
-	return (0);
+	return (!start_game(argv[1]));
 }

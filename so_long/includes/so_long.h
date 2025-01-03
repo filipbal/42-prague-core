@@ -13,14 +13,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-/* Required library includes */
-# include "../libft/libft.h"          /* Include libft first */
-# include "../ft_printf/ft_printf.h"   /* Then include ft_printf */
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 # include "../get_next_line/get_next_line.h"
-# include <mlx.h>			/* MiniLibX graphics library */
-# include <stdlib.h>       /* For memory management functions */
-# include <fcntl.h>        /* For open() */
-# include <unistd.h>       /* For close() */
+# include <mlx.h>
+# include <fcntl.h>
 
 /* Define key codes for Linux/WSL */
 # define KEY_ESC     65307

@@ -92,7 +92,6 @@ int	handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-/* Handle window close button event */
 int	handle_close(t_game *game)
 {
 	cleanup_game(game);
@@ -100,19 +99,8 @@ int	handle_close(t_game *game)
 	return (0);
 }
 
-/* Handle expose event */
 int	handle_expose(t_game *game)
 {
 	render_game(game);
 	return (0);
-}
-
-/* Hook keyboard events */
-/* Hook window close button */
-/* Hook expose event to redraw window */
-void	setup_events(t_game *game)
-{
-	mlx_key_hook(game->win, handle_keypress, game);
-	mlx_hook(game->win, 17, 0L, handle_close, game);
-	mlx_expose_hook(game->win, handle_expose, game);
 }

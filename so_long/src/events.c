@@ -91,6 +91,7 @@ int	handle_keypress(int keycode, t_game *game)
 	render_game(game);
 	return (0);
 }
+
 /* Handle close button */
 int	handle_close(t_game *game)
 {
@@ -98,6 +99,7 @@ int	handle_close(t_game *game)
 	exit(0);
 	return (0);
 }
+
 /* Handle window redraw */
 int	handle_expose(t_game *game)
 {

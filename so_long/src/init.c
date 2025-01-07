@@ -83,29 +83,30 @@ int    load_images(t_game *game)
     return (1);
 }
 
-/* Main initialization function */
+/* Initialize window */
+/* Load game sprites */
+/* Setup event hooks */
 int    init_game(t_game *game)
 {
     ft_printf("Debug: init_game - dimensions before: %dx%d\n", 
              game->map_width, game->map_height);
     
-    /* Initialize window and graphics */
     if (!init_window(game))
     {
         error_exit("Failed to initialize window", game);
         return (0);
     }
-    
     ft_printf("Debug: init_game - dimensions after window init: %dx%d\n", 
              game->map_width, game->map_height);
     
-    /* Load game sprites */
     if (!load_images(game))
     {
         error_exit("Failed to load images", game);
         return (0);
-    }
-    
+    } 
+    mlx_key_hook(game->win, handle_keypress, game);
+    mlx_hook(game->win, 17, 0L, handle_close, game);
+    mlx_expose_hook(game->win, handle_expose, game); 
     ft_printf("Debug: Game initialization successful\n");
     return (1);
 }

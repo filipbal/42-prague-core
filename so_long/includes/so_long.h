@@ -70,7 +70,6 @@ typedef struct s_game
 /* Initialization functions */
 int		init_game(t_game *game);
 int		load_images(t_game *game);
-void	setup_events(t_game *game);
 
 /* Map functions */
 int		parse_map(t_game *game, char *filename);
@@ -79,7 +78,8 @@ void	free_map(char **map, int height);
 
 /* Game logic functions */
 int		handle_keypress(int keycode, t_game *game);
-int		move_player(t_game *game, int new_x, int new_y);
+int		handle_close(t_game *game);
+int		handle_expose(t_game *game);
 void	update_game_state(t_game *game);
 void	render_game(t_game *game);
 void	cleanup_game(t_game *game);

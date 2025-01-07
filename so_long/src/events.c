@@ -15,6 +15,10 @@
 /* This function handles the win condition when player reaches exit */
 static void    handle_exit(t_game *game)
 {
+    /* First increment move counter since this is a valid move */
+    game->moves++;
+    ft_printf("Moves: %d\n", game->moves);
+    
     /* Check if all collectibles are gathered before allowing exit */
     if (game->collected == game->collectibles)
     {

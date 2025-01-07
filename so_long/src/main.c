@@ -51,7 +51,6 @@ static int	start_game(char *map_file)
 		cleanup_game(&game);
 		return (0);
 	}
-	setup_events(&game);
 	ft_printf("Welcome to Betty's Adventure!\n");
 	ft_printf("Collect all %d bones and reach the bed!\n", game.collectibles);
 	ft_printf("Use WASD or arrow keys to move\n");

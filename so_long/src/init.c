@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:55:55 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:01:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,4 +137,3 @@ void	cleanup_game(t_game *game)
 	}
 	game->mlx = NULL;
 }
-

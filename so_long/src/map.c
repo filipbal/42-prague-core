@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:54:28 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:13:37 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:45:39 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_map_dimensions(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		error_exit("Failed to open map file (check read permissions)", game);
 	game->map_height = 0;
 	game->map_width = 0;
 	while (1)

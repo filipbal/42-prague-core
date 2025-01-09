@@ -6,11 +6,29 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/01 17:52:19 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:55:55 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/* Get screen dimensions and validate window size */
+static int	get_window_size(t_game *game, int *width, int *height)
+{
+	int	screen_width;
+	int	screen_height;
+
+	mlx_get_screen_size(game->mlx, &screen_width, &screen_height);
+	*width = game->map_width * TILE_SIZE;
+	*height = game->map_height * TILE_SIZE;
+	if (*width > screen_width || *height > screen_height)
+	{
+		ft_printf("Error\nMap is too large for screen resolution (%dx%d)\n",
+			screen_width, screen_height);
+		return (0);
+	}
+	return (1);
+}
 
 /* Initialize MLX and create window based on map dimensions */
 /* Calculate window dimensions */
@@ -26,9 +44,7 @@ static int	init_window(t_game *game)
 		ft_printf("Debug: MLX initialization failed\n");
 		return (0);
 	}
-	window_width = game->map_width * TILE_SIZE;
-	window_height = game->map_height * TILE_SIZE;
-	if (window_width <= 0 || window_height <= 0)
+	if (!get_window_size(game, &window_width, &window_height))
 	{
 		free(game->mlx);
 		return (0);
@@ -74,15 +90,11 @@ int	load_images(t_game *game)
 /* Setup event hooks */
 int	init_game(t_game *game)
 {
-	ft_printf("Debug: init_game - dimensions before: %dx%d\n",
-		game->map_width, game->map_height);
 	if (!init_window(game))
 	{
 		error_exit("Failed to initialize window", game);
 		return (0);
 	}
-	ft_printf("Debug: init_game - dimensions after window init: %dx%d\n",
-		game->map_width, game->map_height);
 	if (!load_images(game))
 	{
 		error_exit("Failed to load images", game);
@@ -91,7 +103,6 @@ int	init_game(t_game *game)
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_hook(game->win, 17, 0L, handle_close, game);
 	mlx_expose_hook(game->win, handle_expose, game);
-	ft_printf("Debug: Game initialization successful\n");
 	return (1);
 }
 
@@ -127,12 +138,3 @@ void	cleanup_game(t_game *game)
 	game->mlx = NULL;
 }
 
-/* Error handling function */
-void	error_exit(char *message, t_game *game)
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
-	cleanup_game(game);
-	exit(1);
-}

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:27:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/01 17:27:50 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:09:56 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,13 @@ int		load_images(t_game *game);
 
 /* Map functions */
 int		parse_map(t_game *game, char *filename);
-int		validate_map(t_game *game);
 void	free_map(char **map, int height);
+int		check_walls(t_game *game);
+int		check_elements(t_game *game);
+int		check_path(t_game *game);
+void	update_element_counts(t_game *game, int i, int j, int counts[3]);
+void	flood_fill(char **map, int x, int y, int *collectibles);
+int		validate_map(t_game *game);
 
 /* Game logic functions */
 int		handle_keypress(int keycode, t_game *game);

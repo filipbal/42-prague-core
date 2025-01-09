@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:02:22 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:34:45 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:40:28 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,22 @@ char	**map_copy(char **map, int height)
 	return (copy);
 }
 
-/* Calculate window dimensions based on map size */
-/* Ensure window size doesn't exceed screen dimensions */
-void	get_window_size(t_game *game, int *width, int *height)
+/* Get screen dimensions and validate window size */
+int	get_window_size(t_game *game, int *width, int *height)
 {
+	int	screen_width;
+	int	screen_height;
+
+	mlx_get_screen_size(game->mlx, &screen_width, &screen_height);
 	*width = game->map_width * TILE_SIZE;
 	*height = game->map_height * TILE_SIZE;
-	if (*width > 2560)
-		*width = 2560;
-	if (*height > 1440)
-		*height = 1440;
+	if (*width > screen_width || *height > screen_height)
+	{
+		ft_printf("Error\nMap is too large for screen resolution (%dx%d)\n",
+			screen_width, screen_height);
+		return (0);
+	}
+	return (1);
 }
 
 /* Print game statistics */

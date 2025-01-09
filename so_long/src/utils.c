@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:02:22 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:54:51 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:24:14 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,4 @@ void	error_exit(char *message, t_game *game)
 	ft_putstr_fd("\n", 2);
 	cleanup_game(game);
 	exit(1);
-}
-
-/* Print game statistics */
-void	print_game_stats(t_game *game)
-{
-	ft_printf("\nGame Statistics:\n");
-	ft_printf("Map size: %dx%d\n", game->map_width, game->map_height);
-	ft_printf("Collectibles: %d\n", game->collectibles);
-	ft_printf("Moves made: %d\n", game->moves);
-}
-
-/* Debug function to print current map state */
-void	debug_print_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->map_height)
-	{
-		ft_printf("%s\n", game->map[i]);
-		i++;
-	}
 }

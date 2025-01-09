@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:29 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:15:02 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:51:33 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ int	check_path(t_game *game)
 int	validate_map(t_game *game)
 {
 	if (!check_elements(game))
-		return (0);
+		error_exit("Map must contain exactly 1P, 1E, and at least 1C", game);
 	if (!check_walls(game))
-		return (0);
-	return (check_path(game));
+		error_exit("Map must be surrounded by walls", game);
+	if (!check_path(game))
+		error_exit("No valid path to collect all items and reach exit", game);
+	return (1);
 }

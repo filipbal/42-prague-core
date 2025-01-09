@@ -5,113 +5,106 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 18:01:47 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/01 18:01:47 by fbalakov         ###   ########.fr       */
+/*   Created: 2025/01/09 11:01:29 by fbalakov          #+#    #+#             */
+/*   Updated: 2025/01/09 11:15:02 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Validate each character in the map */
-int	validate_chars(char **map, int height, int width)
+/* Recursive flood fill algorithm to verify map reachability
+** Marks visited cells with 'V' and counts collectibles
+** Used by check_path to validate map is solvable */
+void	flood_fill(char **map, int x, int y, int *collectibles)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j < width)
-		{
-			if (!ft_strchr("01CEP", map[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	if (map[y][x] == WALL || map[y][x] == 'V')
+		return ;
+	if (map[y][x] == COLLECT)
+		(*collectibles)++;
+	map[y][x] = 'V';
+	flood_fill(map, x + 1, y, collectibles);
+	flood_fill(map, x - 1, y, collectibles);
+	flood_fill(map, x, y + 1, collectibles);
+	flood_fill(map, x, y - 1, collectibles);
 }
 
-/* Check if the map is rectangular */
-int	validate_rectangle(char **map, int height, int width)
+/* Verifies map is surrounded by walls
+** Checks first/last row and first/last column
+** Returns 1 if walls are valid, 0 if not */
+int	check_walls(t_game *game)
 {
 	int	i;
 
-	i = 0;
-	while (i < height)
-	{
-		if (ft_strlen(map[i]) != (size_t)width)
+	i = -1;
+	while (++i < game->map_width)
+		if (game->map[0][i] != WALL ||
+			game->map[game->map_height - 1][i] != WALL)
 			return (0);
-		i++;
-	}
+	i = 0;
+	while (++i < game->map_height - 1)
+		if (game->map[i][0] != WALL ||
+			game->map[i][game->map_width - 1] != WALL)
+			return (0);
 	return (1);
 }
 
-/* Validate map dimensions */
-int	validate_dimensions(int height, int width)
-{
-	if (height < 3 || width < 3)
-		return (0);
-	/* Adjusted max dimensions for 64x64 tiles */
-	/* Max window size consideration:
-	 * Width: 30 * 64 = 1920 pixels (standard screen width)
-	 * Height: 16 * 64 = 1024 pixels (comfortable height) */
-	if (height > 16 || width > 30)
-		return (0);
-	return (1);
-}
-
-/* Count specific elements in map */
-void	count_elements(t_game *game, int *player, int *exit)
+/* Counts and validates required map elements
+** Verifies exactly one player, one exit, and at least one collectible
+** Updates game struct with positions and counts */
+int	check_elements(t_game *game)
 {
 	int	i;
 	int	j;
+	int	counts[3];
 
-	*player = 0;
-	*exit = 0;
-	game->collectibles = 0;
+	counts[0] = 0;
+	counts[1] = 0;
+	counts[2] = 0;
 	i = -1;
 	while (++i < game->map_height)
 	{
 		j = -1;
 		while (++j < game->map_width)
-		{
-			if (game->map[i][j] == PLAYER)
-			{
-				game->player_x = j;
-				game->player_y = i;
-				(*player)++;
-			}
-			else if (game->map[i][j] == EXIT)
-			{
-				game->exit_x = j;
-				game->exit_y = i;
-				(*exit)++;
-			}
-			else if (game->map[i][j] == COLLECT)
-				game->collectibles++;
-		}
+			update_element_counts(game, i, j, counts);
 	}
+	game->collectibles = counts[2];
+	return (counts[0] == 1 && counts[1] == 1 && counts[2] > 0);
 }
 
-/* Complete map validation */
+/* Creates map copy and uses flood fill to verify
+** all collectibles and exit are reachable from player position
+** Returns 1 if path exists to all required elements */
+int	check_path(t_game *game)
+{
+	char	**map_copy;
+	int		collectibles;
+	int		exit_reachable;
+	int		i;
+
+	map_copy = (char **)malloc(sizeof(char *) * game->map_height);
+	if (!map_copy)
+		return (0);
+	i = -1;
+	while (++i < game->map_height)
+	{
+		map_copy[i] = ft_strdup(game->map[i]);
+		if (!map_copy[i])
+			return (free_map(map_copy, i), 0);
+	}
+	collectibles = 0;
+	flood_fill(map_copy, game->player_x, game->player_y, &collectibles);
+	exit_reachable = (map_copy[game->exit_y][game->exit_x] == 'V');
+	free_map(map_copy, game->map_height);
+	return (collectibles == game->collectibles && exit_reachable);
+}
+
+/* Main validation function that coordinates all checks
+** Returns 1 if map passes all validation, 0 if any check fails */
 int	validate_map(t_game *game)
 {
-	int	player_count;
-	int	exit_count;
-
-	if (!validate_dimensions(game->map_height, game->map_width))
+	if (!check_elements(game))
 		return (0);
-	if (!validate_rectangle(game->map, game->map_height, game->map_width))
+	if (!check_walls(game))
 		return (0);
-	if (!validate_chars(game->map, game->map_height, game->map_width))
-		return (0);
-	
-	count_elements(game, &player_count, &exit_count);
-	
-	if (player_count != 1 || exit_count != 1 || game->collectibles < 1)
-		return (0);
-	
-	return (1);
+	return (check_path(game));
 }

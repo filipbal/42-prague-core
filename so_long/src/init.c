@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 10:43:01 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:56:26 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	load_images(t_game *game)
 /* Initialize window */
 /* Load game sprites */
 /* Setup event hooks */
-int	init_game(t_game *game)
+void	init_game(t_game *game)
 {
 	if (!init_window(game))
 		error_exit("Failed to initialize window", game);
@@ -86,7 +86,6 @@ int	init_game(t_game *game)
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_hook(game->win, 17, 0L, handle_close, game);
 	mlx_expose_hook(game->win, handle_expose, game);
-	return (1);
 }
 
 /* Free sprites if they were loaded */

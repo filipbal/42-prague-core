@@ -6,40 +6,32 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 13:21:36 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:38:21 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Get screen dimensions and validate window size */
-static void	get_window_size(t_game *game, int *width, int *height)
-{
-	int	screen_width;
-	int	screen_height;
-
-	mlx_get_screen_size(game->mlx, &screen_width, &screen_height);
-	*width = game->map_width * TILE_SIZE;
-	*height = game->map_height * TILE_SIZE;
-	if (*width > screen_width || *height > screen_height)
-	{
-		free(game->mlx);
-		error_exit("Map is too large for screen resolution", game);
-	}
-}
-
-/* Initialize MLX and create window based on map dimensions */
-/* Calculate window dimensions */
+/* Initialize MLX and validate window dimensions*/
 /* Create window with calculated dimensions */
 static void	init_window(t_game *game)
 {
 	int	window_width;
 	int	window_height;
+	int	screen_width;
+	int	screen_height;
 
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error_exit("MLX initialization failed", game);
-	get_window_size(game, &window_width, &window_height);
+	mlx_get_screen_size(game->mlx, &screen_width, &screen_height);
+	window_width = game->map_width * TILE_SIZE;
+	window_height = game->map_height * TILE_SIZE;
+	if (window_width > screen_width || window_height > screen_height)
+	{
+		free(game->mlx);
+		error_exit("Map is too large for screen resolution", game);
+	}
 	game->win = mlx_new_window(game->mlx, window_width, window_height,
 			WINDOW_TITLE);
 	if (!game->win)

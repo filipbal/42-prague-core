@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:57:21 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/01 17:57:21 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:04:29 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static void	process_move(t_game *game, int new_x, int new_y)
 ** Render updated game state */
 int	handle_keypress(int keycode, t_game *game)
 {
-	ft_printf("Debug: Key pressed: %d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		cleanup_game(game);

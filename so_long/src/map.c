@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:54:28 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 10:55:23 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:02:24 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ static int	read_map_content(t_game *game, char *filename)
 }
 
 /* Main map parsing function that coordinates all validation
-** Reads map, validates it, and sets up initial game state
-** Returns 1 if map is valid and loaded, 0 on error */
+** Reads map, validates it, and sets up initial game state */
 void	parse_map(t_game *game, char *filename)
 {
 	if (!get_map_dimensions(game, filename))

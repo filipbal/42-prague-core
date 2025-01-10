@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 12:01:11 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:16:25 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ static int	init_window(t_game *game)
 
 	game->mlx = mlx_init();
 	if (!game->mlx)
-	{
-		ft_printf("Debug: MLX initialization failed\n");
-		return (0);
-	}
+		error_exit("MLX initialization failed", game);
 	if (!get_window_size(game, &window_width, &window_height))
 	{
 		free(game->mlx);
@@ -53,9 +50,8 @@ static int	init_window(t_game *game)
 			WINDOW_TITLE);
 	if (!game->win)
 	{
-		ft_printf("Debug: Window creation failed\n");
 		free(game->mlx);
-		return (0);
+		error_exit("Window creation failed", game);
 	}
 	return (1);
 }

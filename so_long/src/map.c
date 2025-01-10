@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:54:28 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 12:45:39 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:55:23 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,18 @@ static int	read_map_content(t_game *game, char *filename)
 /* Main map parsing function that coordinates all validation
 ** Reads map, validates it, and sets up initial game state
 ** Returns 1 if map is valid and loaded, 0 on error */
-int	parse_map(t_game *game, char *filename)
+void	parse_map(t_game *game, char *filename)
 {
 	if (!get_map_dimensions(game, filename))
-		return (0);
+		error_exit("Invalid map dimensions", game);
 	if (!read_map_content(game, filename))
-		return (0);
+		error_exit("Failed to read map content", game);
 	if (!validate_map(game))
 	{
 		free_map(game->map, game->map_height);
 		game->map = NULL;
-		return (0);
+		error_exit("Invalid map configuration", game);
 	}
-	return (1);
 }
 
 /* Safely frees a 2D array up to the specified height

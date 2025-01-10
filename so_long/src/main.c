@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:00:11 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 09:59:20 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:49:26 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ int	main(int argc, char **argv)
 		error_exit("Usage: ./so_long <map_file.ber>", &game);
 	if (!check_file_extension(argv[1]))
 		error_exit("Invalid file extension (must be .ber)", &game);
-	if (!parse_map(&game, argv[1]))
-		error_exit("Invalid map configuration", &game);
-	if (!init_game(&game))
-		error_exit("Failed to initialize game", &game);
+	parse_map(&game, argv[1]);
+	init_game(&game);
 	ft_printf("Welcome to Betty's Adventure!\n");
 	ft_printf("Collect all %d bones and reach the bed!\n", game.collectibles);
 	ft_printf("Use WASD or arrow keys to move\n");

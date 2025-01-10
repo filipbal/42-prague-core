@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 10:16:25 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:43:01 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ static int	get_window_size(t_game *game, int *width, int *height)
 	*width = game->map_width * TILE_SIZE;
 	*height = game->map_height * TILE_SIZE;
 	if (*width > screen_width || *height > screen_height)
-	{
-		ft_printf("Error\nMap is too large for screen resolution (%dx%d)\n",
-			screen_width, screen_height);
-		return (0);
-	}
+		error_exit("Map is too large for screen resolution", game);
 	return (1);
 }
 
@@ -74,10 +70,7 @@ int	load_images(t_game *game)
 			"assets/exit.xpm", &width, &height);
 	if (!game->img_player || !game->img_wall
 		|| !game->img_collect || !game->img_exit)
-	{
 		error_exit("Failed to load one or more sprites", game);
-		return (0);
-	}
 	return (1);
 }
 
@@ -87,15 +80,9 @@ int	load_images(t_game *game)
 int	init_game(t_game *game)
 {
 	if (!init_window(game))
-	{
 		error_exit("Failed to initialize window", game);
-		return (0);
-	}
 	if (!load_images(game))
-	{
 		error_exit("Failed to load images", game);
-		return (0);
-	}
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_hook(game->win, 17, 0L, handle_close, game);
 	mlx_expose_hook(game->win, handle_expose, game);

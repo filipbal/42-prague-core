@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:27:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/09 11:55:30 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:51:53 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ typedef struct s_game
 }	t_game;
 
 /* Initialization functions */
-int		init_game(t_game *game);
+void	init_game(t_game *game);
 int		load_images(t_game *game);
 
 /* Map functions */
-int		parse_map(t_game *game, char *filename);
+void	parse_map(t_game *game, char *filename);
 void	free_map(char **map, int height);
 int		check_walls(t_game *game);
 int		check_elements(t_game *game);

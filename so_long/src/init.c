@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 13:38:21 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:18:14 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void	init_game(t_game *game)
 /* Don't free game->mlx - it's handled by mlx_destroy_window */
 void	cleanup_game(t_game *game)
 {
-	if (!game)
-		return ;
 	if (game->mlx)
 	{
 		if (game->img_player)
@@ -93,15 +91,8 @@ void	cleanup_game(t_game *game)
 		if (game->img_exit)
 			mlx_destroy_image(game->mlx, game->img_exit);
 		if (game->win)
-		{
 			mlx_destroy_window(game->mlx, game->win);
-			game->win = NULL;
-		}
 	}
 	if (game->map)
-	{
 		free_map(game->map, game->map_height);
-		game->map = NULL;
-	}
-	game->mlx = NULL;
 }

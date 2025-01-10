@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:52:19 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/10 11:56:26 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:00:26 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	init_window(t_game *game)
 /* Load all game sprites from XPM files  */
 /* Verify all images loaded successfully */
 /* Load each sprite and check for errors */
-int	load_images(t_game *game)
+void	load_images(t_game *game)
 {
 	int	width;
 	int	height;
@@ -71,7 +71,6 @@ int	load_images(t_game *game)
 	if (!game->img_player || !game->img_wall
 		|| !game->img_collect || !game->img_exit)
 		error_exit("Failed to load one or more sprites", game);
-	return (1);
 }
 
 /* Initialize window */
@@ -81,8 +80,7 @@ void	init_game(t_game *game)
 {
 	if (!init_window(game))
 		error_exit("Failed to initialize window", game);
-	if (!load_images(game))
-		error_exit("Failed to load images", game);
+	load_images(game);
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_hook(game->win, 17, 0L, handle_close, game);
 	mlx_expose_hook(game->win, handle_expose, game);

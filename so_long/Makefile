@@ -16,7 +16,7 @@ GNL_FILES = get_next_line.c get_next_line_utils.c
 GNL_SRCS = $(addprefix $(GNL_DIR), $(GNL_FILES))
 
 # Source files
-SRC_FILES = main.c init.c map.c validate.c render.c events.c utils.c
+SRC_FILES = main.c init.c map.c validate.c render.c events.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES)) $(GNL_SRCS)
 OBJS = $(SRCS:.c=.o)
 

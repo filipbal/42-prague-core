@@ -16,6 +16,8 @@ int	check_duplicates(t_stack *stack, int value)
 {
 	t_node	*current;
 
+	if (!stack)
+		return (0);
 	current = stack->head;
 	while (current)
 	{
@@ -26,21 +28,33 @@ int	check_duplicates(t_stack *stack, int value)
 	return (0);
 }
 
-static int	add_number_to_stack(t_stack *stack, char *str)
+static void	add_number_to_stack(t_stack *stack, char *str)
 {
 	int		value;
 	t_node	*new;
 
-	if (!is_valid_integer(str) || !is_within_limits(str))
-		return (0);
+	if (!stack || !str || !is_valid_integer(str) || !is_within_limits(str))
+	{
+		write(2, ERR_MSG, 6);
+		if (stack)
+			stack_clear(stack);
+		exit(1);
+	}
 	value = (int)ft_atoi_strict(str);
 	if (check_duplicates(stack, value))
-		return (0);
+	{
+		write(2, ERR_MSG, 6);
+		stack_clear(stack);
+		exit(1);
+	}
 	new = create_node(value);
 	if (!new)
-		return (0);
+	{
+		write(2, ERR_MALLOC, 24);
+		stack_clear(stack);
+		exit(1);
+	}
 	stack_add_back(stack, new);
-	return (1);
 }
 
 int	parse_arguments(int argc, char **argv, t_stack *stack_a)
@@ -50,8 +64,7 @@ int	parse_arguments(int argc, char **argv, t_stack *stack_a)
 	i = 1;
 	while (i < argc)
 	{
-		if (!add_number_to_stack(stack_a, argv[i]))
-			return (0);
+		add_number_to_stack(stack_a, argv[i]);
 		i++;
 	}
 	return (1);

@@ -22,10 +22,6 @@ static void	handle_error(t_stack *stack_a, t_stack *stack_b)
 	exit(1);
 }
 
-/*
-	Calls stack_clear to free all nodes
-	Frees the stack structure itself
-*/
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a)
@@ -40,18 +36,21 @@ static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static int	init_push_swap(t_stack **stack_a, t_stack **stack_b)
+static void	init_push_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	*stack_a = stack_init();
 	if (!(*stack_a))
-		return (write(2, ERR_MALLOC, 24));
+	{
+		write(2, ERR_MALLOC, 24);
+		exit(1);
+	}
 	*stack_b = stack_init();
 	if (!(*stack_b))
 	{
 		free(*stack_a);
-		return (write(2, ERR_MALLOC, 24));
+		write(2, ERR_MALLOC, 24);
+		exit(1);
 	}
-	return (1);
 }
 
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
@@ -73,8 +72,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	if (!init_push_swap(&stack_a, &stack_b))
-		return (1);
+	init_push_swap(&stack_a, &stack_b);
 	if (!parse_arguments(argc, argv, stack_a))
 	{
 		free_stacks(stack_a, stack_b);

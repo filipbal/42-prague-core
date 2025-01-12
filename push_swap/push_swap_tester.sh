@@ -129,6 +129,20 @@ check_graded_operations() {
     echo "---"
 }
 
+test_non_consecutive() {
+    echo "=== Testing Non-Consecutive Numbers ==="
+    
+    # Generate 100 random numbers between 1-1000
+    echo "Testing 100 random numbers (1-1000):"
+    ARG_RANDOM_100=$(shuf -i 1-1000 -n 100 | tr '\n' ' ')
+    check_graded_operations 100 "700 900 1100 1300 1500" "$ARG_RANDOM_100"
+    
+    # Generate 500 random numbers between 1-10000
+    echo "Testing 500 random numbers (1-10000):"
+    ARG_RANDOM_500=$(shuf -i 1-10000 -n 500 | tr '\n' ' ')
+    check_graded_operations 500 "5500 7000 8500 10000 11500" "$ARG_RANDOM_500"
+}
+
 # Start testing
 echo "=== Push_swap Tester ==="
 
@@ -153,3 +167,5 @@ check_graded_operations 100 "700 900 1100 1300 1500" "$ARG100"
 # Test 500 numbers
 ARG500=$(seq 1 500 | shuf | tr '\n' ' ')
 check_graded_operations 500 "5500 7000 8500 10000 11500" "$ARG500"
+
+test_non_consecutive

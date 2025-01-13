@@ -6,11 +6,10 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 08:53:24 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:14:28 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* push_swap.h */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 

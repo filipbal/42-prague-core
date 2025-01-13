@@ -6,21 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:53 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:45:08 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	handle_error(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a)
-		stack_clear(stack_a);
-	if (stack_b)
-		stack_clear(stack_b);
-	write(2, ERR_MSG, 6);
-	exit(1);
-}
 
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
@@ -76,7 +66,8 @@ int	main(int argc, char **argv)
 	if (!parse_arguments(argc, argv, stack_a))
 	{
 		free_stacks(stack_a, stack_b);
-		handle_error(NULL, NULL);
+		write(2, ERR_MSG, 6);
+		return (1);
 	}
 	if (!is_sorted(stack_a))
 		sort_stack(stack_a, stack_b);

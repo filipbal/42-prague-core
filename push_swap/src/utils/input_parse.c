@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:48:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 11:53:53 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:27:56 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,28 @@
 ** Checks for duplicate values in the stack
 ** @param stack: Stack to check for duplicates
 ** @param value: New value to check against existing stack values
-** @return: 1 if duplicate found, 0 if no duplicates
+** Exits with error message if duplicate found or stack is NULL
 */
-int	check_duplicates(t_stack *stack, int value)
+void	check_duplicates(t_stack *stack, int value)
 {
 	t_node	*current;
 
 	if (!stack)
-		return (0);
+	{
+		write(2, ERR_MSG, 6);
+		exit(1);
+	}
 	current = stack->head;
 	while (current)
 	{
 		if (current->value == value)
-			return (1);
+		{
+			write(2, ERR_MSG, 6);
+			stack_clear(stack);
+			exit(1);
+		}
 		current = current->next;
 	}
-	return (0);
 }
 
 /*
@@ -54,16 +60,11 @@ static void	add_number_to_stack(t_stack *stack, char *str)
 		exit(1);
 	}
 	value = (int)ft_atoi_strict(str);
-	if (check_duplicates(stack, value))
-	{
-		write(2, ERR_MSG, 6);
-		stack_clear(stack);
-		exit(1);
-	}
+	check_duplicates(stack, value);
 	new = create_node(value);
 	if (!new)
 	{
-		write(2, ERR_MALLOC, 24);
+		write(2, ERR_MSG, 6);
 		stack_clear(stack);
 		exit(1);
 	}

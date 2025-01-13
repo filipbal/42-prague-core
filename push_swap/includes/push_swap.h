@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:44:32 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:25:40 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 /* ../src/utils/input_parse.c */
-int		check_duplicates(t_stack *stack, int value);
+void	check_duplicates(t_stack *stack, int value);
 int		parse_arguments(int argc, char **argv, t_stack *stack_a);
 
 /* ../src/utils/input_validation.c */

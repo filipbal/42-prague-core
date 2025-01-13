@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:58:03 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:25:02 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	init_push_swap(&stack_a, &stack_b);
-	if (!parse_arguments(argc, argv, stack_a))
-	{
-		free_stacks(stack_a, stack_b);
-		write(2, ERR_MSG, 6);
-		return (1);
-	}
+	parse_arguments(argc, argv, stack_a);
 	if (!is_sorted(stack_a))
 		sort_stack(stack_a, stack_b);
 	free_stacks(stack_a, stack_b);

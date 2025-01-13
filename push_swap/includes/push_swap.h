@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/12/10 18:08:33 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 08:53:24 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,16 @@ typedef struct s_stack
 int		main(int argc, char **argv);
 
 /* ../src/algorithm/sorting.c */
-void	sort_three(t_stack *stack_a);
+void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *stack_a, t_stack *stack_b);
+
+/* ../src/algorithm/sorting_utils.c */
+void	index_stack(t_stack *stack);
+int		get_max_bits(t_stack *stack);
+int		get_min_index(t_stack *stack);
+void	push_min_to_b(t_stack *stack_a, t_stack *stack_b);
+int		is_valid_three(t_stack *s);
 
 /* ../src/operations/swap_ops.c */
 void	sa(t_stack *stack_a);

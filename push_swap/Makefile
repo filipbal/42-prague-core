@@ -6,7 +6,7 @@
 #    By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 11:19:05 by fbalakov          #+#    #+#              #
-#    Updated: 2024/11/18 12:06:30 by fbalakov         ###   ########.fr        #
+#    Updated: 2025/01/13 08:54:24 by fbalakov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS = src/main.c \
        src/operations/push_ops.c \
        src/operations/rotate_ops.c \
        src/operations/rev_rotate_ops.c \
-       src/algorithm/sorting.c
+       src/algorithm/sorting.c \
+	   src/algorithm/sorting_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

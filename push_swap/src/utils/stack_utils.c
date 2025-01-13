@@ -6,11 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:43 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 08:38:58 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:08:49 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 /*
     Allocates and initializes stack structure with default values

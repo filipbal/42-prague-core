@@ -6,11 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 08:49:31 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:08:03 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 int	is_valid_three(t_stack *s)
 {

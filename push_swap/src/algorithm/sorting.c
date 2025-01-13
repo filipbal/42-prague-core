@@ -6,11 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 08:50:54 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:08:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 void	sort_three(t_stack *s)
 {

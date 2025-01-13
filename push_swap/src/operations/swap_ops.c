@@ -6,11 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:56 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/12/10 16:11:17 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:08:30 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 void	sa(t_stack *stack_a)
 {

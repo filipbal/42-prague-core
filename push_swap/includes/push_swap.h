@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:14:28 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:44:32 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <limits.h>
 
-/* Error Messages */
 # define ERR_MSG "Error\n"
 # define ERR_MALLOC "Memory allocation failed\n"
 
@@ -36,9 +35,6 @@ typedef struct s_stack
 	t_node	*tail;
 	int		size;
 }	t_stack;
-
-/* ../src/main.c */
-int		main(int argc, char **argv);
 
 /* ../src/algorithm/sorting.c */
 void	sort_three(t_stack *stack);

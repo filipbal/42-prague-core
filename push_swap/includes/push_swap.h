@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:56:16 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:31:38 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,10 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *stack_a, t_stack *stack_b);
 
 /* ../src/algorithm/sorting_utils.c */
+int		is_valid_three(t_stack *s);
 void	index_stack(t_stack *stack);
 int		get_max_bits(t_stack *stack);
-int		get_min_index(t_stack *stack);
 void	push_min_to_b(t_stack *stack_a, t_stack *stack_b);
-int		is_valid_three(t_stack *s);
 
 /* ../src/operations/swap_ops.c */
 void	sa(t_stack *stack_a);

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:03 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:30:51 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	get_max_bits(t_stack *stack)
 	return (bits);
 }
 
-int	get_min_index(t_stack *stack)
+static int	get_min_index(t_stack *stack)
 {
 	t_node	*current;
 	int		min;

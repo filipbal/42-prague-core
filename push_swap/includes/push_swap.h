@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:30:31 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:36:50 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,9 @@ int		is_sorted(t_stack *stack);
 t_stack	*stack_init(void);
 t_node	*create_node(int value);
 void	stack_clear(t_stack *stack);
+
+/* ../src/utils/string_utils.c */
+char	**ft_split(char *str);
+void	free_split(char **split);
 
 #endif

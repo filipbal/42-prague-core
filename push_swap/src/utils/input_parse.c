@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:48:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:33:20 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:29:05 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,33 @@ static void	add_number_to_stack(t_stack *stack, char *str)
 ** @param stack_a: Stack to populate with validated numbers
 ** @return: 1 on success, 0 on any error (invalid input or memory allocation)
 */
+/* Update parse_arguments function in input_parse.c */
+
 void	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
-	int	i;
+	char	**split;
+	int		i;
 
-	i = 1;
-	while (i < argc)
+	if (argc == 2)
 	{
-		add_number_to_stack(stack_a, argv[i]);
-		i++;
+		split = ft_split(argv[1]);
+		if (!split)
+			error_exit();
+		i = 0;
+		while (split[i])
+		{
+			add_number_to_stack(stack_a, split[i]);
+			i++;
+		}
+		free_split(split);
+	}
+	else
+	{
+		i = 1;
+		while (i < argc)
+		{
+			add_number_to_stack(stack_a, argv[i]);
+			i++;
+		}
 	}
 }

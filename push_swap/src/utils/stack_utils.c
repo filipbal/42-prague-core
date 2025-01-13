@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:43 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 14:15:27 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:33:51 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*stack_init(void)
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
-	stack->head = NULL;
+	stack->h = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
 	return (stack);
@@ -57,14 +57,14 @@ void	stack_clear(t_stack *stack)
 
 	if (!stack)
 		return ;
-	current = stack->head;
+	current = stack->h;
 	while (current)
 	{
 		next = current->next;
 		free(current);
 		current = next;
 	}
-	stack->head = NULL;
+	stack->h = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
 }

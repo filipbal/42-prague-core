@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:30:22 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:32:13 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	index_stack(t_stack *stack)
 	t_node	*j;
 	int		index;
 
-	if (!stack || !stack->head)
+	if (!stack || !stack->h)
 		return ;
-	i = stack->head;
+	i = stack->h;
 	while (i)
 	{
 		index = 0;
-		j = stack->head;
+		j = stack->h;
 		while (j)
 		{
 			if (j->value < i->value)
@@ -44,9 +44,9 @@ int	get_max_bits(t_stack *stack)
 	int		max;
 	int		bits;
 
-	if (!stack || !stack->head)
+	if (!stack || !stack->h)
 		return (0);
-	current = stack->head;
+	current = stack->h;
 	max = current->index;
 	while (current)
 	{
@@ -68,9 +68,9 @@ static int	get_min_index(t_stack *stack)
 	int		index;
 	int		min_index;
 
-	if (!stack || !stack->head)
+	if (!stack || !stack->h)
 		return (-1);
-	current = stack->head;
+	current = stack->h;
 	min = current->value;
 	index = 0;
 	min_index = 0;

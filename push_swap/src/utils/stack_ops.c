@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:50:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 14:21:41 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:33:35 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	stack_add_back(t_stack *stack, t_node *new_node)
 			free(new_node);
 		error_exit();
 	}
-	if (!stack->head)
+	if (!stack->h)
 	{
-		stack->head = new_node;
+		stack->h = new_node;
 		stack->tail = new_node;
 	}
 	else
@@ -48,9 +48,9 @@ int	is_sorted(t_stack *stack)
 {
 	t_node	*current;
 
-	if (!stack || !stack->head)
+	if (!stack || !stack->h)
 		return (1);
-	current = stack->head;
+	current = stack->h;
 	while (current->next)
 	{
 		if (current->value > current->next->value)

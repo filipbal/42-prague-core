@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:48:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:54:03 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:33:20 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	check_duplicates(t_stack *stack, int value)
 
 	if (!stack)
 		error_exit();
-	current = stack->head;
+	current = stack->h;
 	while (current)
 	{
 		if (current->value == value)

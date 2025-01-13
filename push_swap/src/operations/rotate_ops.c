@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:13 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:26 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:33:04 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	ra(t_stack *stack_a)
 {
 	t_node	*first;
 
-	if (!stack_a || !stack_a->head || !stack_a->head->next)
+	if (!stack_a || !stack_a->h || !stack_a->h->next)
 		return ;
-	first = stack_a->head;
-	stack_a->head = first->next;
-	stack_a->head->prev = NULL;
+	first = stack_a->h;
+	stack_a->h = first->next;
+	stack_a->h->prev = NULL;
 	stack_a->tail->next = first;
 	first->prev = stack_a->tail;
 	first->next = NULL;
@@ -32,11 +32,11 @@ void	rb(t_stack *stack_b)
 {
 	t_node	*first;
 
-	if (!stack_b || !stack_b->head || !stack_b->head->next)
+	if (!stack_b || !stack_b->h || !stack_b->h->next)
 		return ;
-	first = stack_b->head;
-	stack_b->head = first->next;
-	stack_b->head->prev = NULL;
+	first = stack_b->h;
+	stack_b->h = first->next;
+	stack_b->h->prev = NULL;
 	stack_b->tail->next = first;
 	first->prev = stack_b->tail;
 	first->next = NULL;
@@ -48,21 +48,21 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*first;
 
-	if (stack_a && stack_a->head && stack_a->head->next)
+	if (stack_a && stack_a->h && stack_a->h->next)
 	{
-		first = stack_a->head;
-		stack_a->head = first->next;
-		stack_a->head->prev = NULL;
+		first = stack_a->h;
+		stack_a->h = first->next;
+		stack_a->h->prev = NULL;
 		stack_a->tail->next = first;
 		first->prev = stack_a->tail;
 		first->next = NULL;
 		stack_a->tail = first;
 	}
-	if (stack_b && stack_b->head && stack_b->head->next)
+	if (stack_b && stack_b->h && stack_b->h->next)
 	{
-		first = stack_b->head;
-		stack_b->head = first->next;
-		stack_b->head->prev = NULL;
+		first = stack_b->h;
+		stack_b->h = first->next;
+		stack_b->h->prev = NULL;
 		stack_b->tail->next = first;
 		first->prev = stack_b->tail;
 		first->next = NULL;

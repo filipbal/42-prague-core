@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:29:00 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:32:40 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	process_bit(t_stack *stack_a, t_stack *stack_b, int bit, int size)
 	j = -1;
 	while (++j < size)
 	{
-		if (((stack_a->head->index >> bit) & 1) == 0)
+		if (((stack_a->h->index >> bit) & 1) == 0)
 			pb(stack_a, stack_b);
 		else
 			ra(stack_a);
@@ -82,7 +82,7 @@ void	sort_large(t_stack *stack_a, t_stack *stack_b)
 	int	max_bits;
 	int	i;
 
-	if (!stack_a || !stack_b || !stack_a->head)
+	if (!stack_a || !stack_b || !stack_a->h)
 		return ;
 	index_stack(stack_a);
 	max_bits = get_max_bits(stack_a);

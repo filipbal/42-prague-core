@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:32:13 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:00:37 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,22 +92,28 @@ static int	get_min_index(t_stack *stack)
 void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;
-	int	i;
+	int	rotations_needed;
 
 	min_index = get_min_index(stack_a);
 	if (min_index == -1)
 		return ;
 	if (min_index <= stack_a->size / 2)
 	{
-		i = 0;
-		while (i++ < min_index)
+		rotations_needed = min_index;
+		while (rotations_needed > 0)
+		{
 			ra(stack_a);
+			rotations_needed--;
+		}
 	}
 	else
 	{
-		i = 0;
-		while (i++ < stack_a->size - min_index)
+		rotations_needed = stack_a->size - min_index;
+		while (rotations_needed > 0)
+		{
 			rra(stack_a);
+			rotations_needed--;
+		}
 	}
 	pb(stack_a, stack_b);
 }

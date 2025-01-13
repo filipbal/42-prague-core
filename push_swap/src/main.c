@@ -6,12 +6,18 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:45:08 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:58:03 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+    Frees memory for both stacks
+    First clears all nodes in each stack
+	Then frees the stack structures themselves
+    Safe to call with NULL as it checks before freeing
+*/
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a)
@@ -26,6 +32,10 @@ static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+/*
+    Allocates memory for stack structures with stack_init
+    Handles allocation failures by freeing any allocated memory
+*/
 static void	init_push_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	*stack_a = stack_init();
@@ -43,6 +53,12 @@ static void	init_push_swap(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+/*
+	For 2 numbers: single swap if needed
+    For 3 numbers: optimized sort_three algorithm
+    For 4-5 numbers: sort_five algorithm using both stacks
+    For larger sets: sort_large algorithm using radix sort
+*/
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size == 2)
@@ -55,6 +71,12 @@ static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_large(stack_a, stack_b);
 }
 
+/*
+	Exits early if no arguments provided
+	Initializes both stacks with error handling
+	If input is invalid, frees memory and exits with error
+	If input is not sorted, applies appropriate sorting algorithm
+*/
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;

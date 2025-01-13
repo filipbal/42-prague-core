@@ -6,20 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:04:25 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:30:22 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_valid_three(t_stack *s)
-{
-	if (!s || s->size != 3 || !s->head)
-		return (0);
-	if (!s->head->next || !s->head->next->next)
-		return (0);
-	return (1);
-}
 
 // Assigns sequential indexes to nodes based on value ordering
 void	index_stack(t_stack *stack)

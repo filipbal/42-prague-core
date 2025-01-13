@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 15:04:20 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:29:00 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	sort_three(t_stack *s)
 	int	b;
 	int	c;
 
-	if (!is_valid_three(s))
+	if (!s || s->size != 3 || !s->h || !s->h->next || !s->h->next->next)
 		return ;
-	a = s->head->value;
-	b = s->head->next->value;
-	c = s->head->next->next->value;
+	a = s->h->value;
+	b = s->h->next->value;
+	c = s->h->next->next->value;
 	if (a > b && b < c && a < c)
 		sa(s);
 	else if (a > b && b > c)

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 14:31:38 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:27:55 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node	*head;
+	t_node	*h;
 	t_node	*tail;
 	int		size;
 }	t_stack;

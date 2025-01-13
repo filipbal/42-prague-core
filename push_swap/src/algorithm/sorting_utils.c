@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:45:10 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 14:30:51 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:04:25 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	is_valid_three(t_stack *s)
 	return (1);
 }
 
+// Assigns sequential indexes to nodes based on value ordering
 void	index_stack(t_stack *stack)
 {
 	t_node	*i;
@@ -45,6 +46,7 @@ void	index_stack(t_stack *stack)
 	}
 }
 
+// Gets number of bits needed to represent largest index
 int	get_max_bits(t_stack *stack)
 {
 	t_node	*current;
@@ -67,6 +69,7 @@ int	get_max_bits(t_stack *stack)
 	return (bits);
 }
 
+// Helper: Gets position of minimum value in stack
 static int	get_min_index(t_stack *stack)
 {
 	t_node	*current;
@@ -93,6 +96,8 @@ static int	get_min_index(t_stack *stack)
 	return (min_index);
 }
 
+// Finds minimum value position, rotates stack, and pushes to stack_b
+// Used by sort_five to isolate smallest values before sorting remaining 3
 void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	min_index;

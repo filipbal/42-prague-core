@@ -6,12 +6,13 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:51 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:11 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:04:20 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Only performs operations if stack size is exactly 3 and has valid nodes
 void	sort_three(t_stack *s)
 {
 	int	a;
@@ -41,6 +42,7 @@ void	sort_three(t_stack *s)
 		rra(s);
 }
 
+// Sorts stack of 4-5 numbers by repeatedly moving smallest to stack_b
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
 	if (!stack_a || !stack_b || stack_a->size < 4 || stack_a->size > 5)
@@ -52,6 +54,11 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 		pa(stack_a, stack_b);
 }
 
+/*
+** Helper: Processes single bit of radix sort
+** Distributes nodes between stacks based on bit value
+** Then returns all nodes back to stack_a
+*/
 static void	process_bit(t_stack *stack_a, t_stack *stack_b, int bit, int size)
 {
 	int	j;
@@ -68,6 +75,7 @@ static void	process_bit(t_stack *stack_a, t_stack *stack_b, int bit, int size)
 		pa(stack_a, stack_b);
 }
 
+// Sorts large stack using radix sort on stack indexes
 void	sort_large(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;

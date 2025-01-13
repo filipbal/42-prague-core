@@ -6,12 +6,17 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:41 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:53:43 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** Validates if a string represents a valid integer format
+** @param str: String to validate
+** @return: 1 if valid integer format, 0 if invalid
+*/
 int	is_valid_integer(char *str)
 {
 	int	i;
@@ -32,6 +37,12 @@ int	is_valid_integer(char *str)
 	return (1);
 }
 
+/*
+** Converts string to long integer with strict validation
+** @param str: String to convert
+** @return: Converted long integer value
+** Note: Assumes input has been validated by is_valid_integer
+*/
 long	ft_atoi_strict(const char *str)
 {
 	long	result;
@@ -55,6 +66,11 @@ long	ft_atoi_strict(const char *str)
 	return (result * sign);
 }
 
+/*
+** Checks if a string represents a number within INT range
+** @param str: String to check
+** @return: 1 if within INT range, 0 if outside
+*/
 int	is_within_limits(char *str)
 {
 	long	num;

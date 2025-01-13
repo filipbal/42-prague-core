@@ -6,12 +6,18 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:48:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:38 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:53:53 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** Checks for duplicate values in the stack
+** @param stack: Stack to check for duplicates
+** @param value: New value to check against existing stack values
+** @return: 1 if duplicate found, 0 if no duplicates
+*/
 int	check_duplicates(t_stack *stack, int value)
 {
 	t_node	*current;
@@ -28,6 +34,13 @@ int	check_duplicates(t_stack *stack, int value)
 	return (0);
 }
 
+/*
+** Error conditions handled:
+** - Invalid integer format
+** - Numbers outside INT range
+** - Duplicate values
+** - Memory allocation failures
+*/
 static void	add_number_to_stack(t_stack *stack, char *str)
 {
 	int		value;
@@ -57,6 +70,13 @@ static void	add_number_to_stack(t_stack *stack, char *str)
 	stack_add_back(stack, new);
 }
 
+/*
+** Parses and validates command line arguments into stack_a
+** @param argc: Number of arguments
+** @param argv: Array of argument strings
+** @param stack_a: Stack to populate with validated numbers
+** @return: 1 on success, 0 on any error (invalid input or memory allocation)
+*/
 int	parse_arguments(int argc, char **argv, t_stack *stack_a)
 {
 	int	i;

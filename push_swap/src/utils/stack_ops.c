@@ -6,11 +6,16 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:50:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:50:35 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:21:41 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** Adds a node to the end of stack
+** Error exits if stack or node is NULL
+*/
 
 void	stack_add_back(t_stack *stack, t_node *new_node)
 {
@@ -34,6 +39,11 @@ void	stack_add_back(t_stack *stack, t_node *new_node)
 	stack->size++;
 }
 
+/*
+** Checks if stack values are in ascending order
+** Returns: 1 if sorted, 0 if not sorted
+** Empty stack is considered sorted
+*/
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;

@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:29:31 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:56:16 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-
-# define ERR_MSG "Error\n"
 
 /* Structures */
 typedef struct s_node
@@ -34,6 +32,9 @@ typedef struct s_stack
 	t_node	*tail;
 	int		size;
 }	t_stack;
+
+/* ../src/algorithm/main.c */
+void	error_exit(void);
 
 /* ../src/algorithm/sorting.c */
 void	sort_three(t_stack *stack);
@@ -67,8 +68,7 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 /* ../src/utils/input_parse.c */
-void	check_duplicates(t_stack *stack, int value);
-int		parse_arguments(int argc, char **argv, t_stack *stack_a);
+void	parse_arguments(int argc, char **argv, t_stack *stack_a);
 
 /* ../src/utils/input_validation.c */
 int		is_valid_integer(char *str);

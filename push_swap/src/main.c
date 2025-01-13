@@ -6,17 +6,27 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:30:27 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:47:08 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-    Frees memory for both stacks
-    First clears all nodes in each stack
+	Writes error message to stderr and exits program.
+	Use this after performing any necessary cleanup.
+*/
+void	error_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+/*
+	Frees memory for both stacks
+	First clears all nodes in each stack
 	Then frees the stack structures themselves
-    Safe to call with NULL as it checks before freeing
+	Safe to call with NULL as it checks before freeing
 */
 static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
@@ -33,31 +43,27 @@ static void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 }
 
 /*
-    Allocates memory for stack structures with stack_init
-    Handles allocation failures by freeing any allocated memory
+	Allocates memory for stack structures with stack_init
+	Handles allocation failures by freeing any allocated memory
 */
 static void	init_push_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	*stack_a = stack_init();
 	if (!(*stack_a))
-	{
-		write(2, ERR_MSG, 6);
-		exit(1);
-	}
+		error_exit();
 	*stack_b = stack_init();
 	if (!(*stack_b))
 	{
 		free(*stack_a);
-		write(2, ERR_MSG, 6);
-		exit(1);
+		error_exit();
 	}
 }
 
 /*
 	For 2 numbers: single swap if needed
-    For 3 numbers: optimized sort_three algorithm
-    For 4-5 numbers: sort_five algorithm using both stacks
-    For larger sets: sort_large algorithm using radix sort
+	For 3 numbers: optimized sort_three algorithm
+	For 4-5 numbers: sort_five algorithm using both stacks
+	For larger sets: sort_large algorithm using radix sort
 */
 static void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {

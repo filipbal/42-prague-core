@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:50:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:44 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:50:35 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	stack_add_back(t_stack *stack, t_node *new_node)
 	{
 		if (new_node)
 			free(new_node);
-		write(2, ERR_MSG, 6);
-		exit(1);
+		error_exit();
 	}
 	if (!stack->head)
 	{

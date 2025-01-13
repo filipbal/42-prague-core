@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:19:37 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:25:40 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:29:31 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <limits.h>
 
 # define ERR_MSG "Error\n"
-# define ERR_MALLOC "Memory allocation failed\n"
 
 /* Structures */
 typedef struct s_node

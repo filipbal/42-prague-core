@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:20:02 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/13 12:25:02 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:30:27 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static void	init_push_swap(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = stack_init();
 	if (!(*stack_a))
 	{
-		write(2, ERR_MALLOC, 24);
+		write(2, ERR_MSG, 6);
 		exit(1);
 	}
 	*stack_b = stack_init();
 	if (!(*stack_b))
 	{
 		free(*stack_a);
-		write(2, ERR_MALLOC, 24);
+		write(2, ERR_MSG, 6);
 		exit(1);
 	}
 }

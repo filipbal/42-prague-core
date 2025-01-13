@@ -6,12 +6,16 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:21:43 by fbalakov          #+#    #+#             */
-/*   Updated: 2024/12/10 16:10:26 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/01/13 08:38:58 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/*
+    Allocates and initializes stack structure with default values
+    Returns pointer to new stack, NULL on failure
+*/
 t_stack	*stack_init(void)
 {
 	t_stack	*stack;
@@ -24,6 +28,7 @@ t_stack	*stack_init(void)
 	stack->size = 0;
 	return (stack);
 }
+
 /*
 	Allocates memory for a new node and initializes its value
 	Connection to stack happens in stack_add_back()
